@@ -38,35 +38,13 @@
      Display / headlines.
      Avenir carries everything that is not a heading, including the small
      letterspaced labels that used to be set in a mono face. */
-  /* Display — real Eurostile if the visitor has it installed, otherwise the
-     self-hosted Michroma fallback (see the @font-face below, which is
-     width-matched to Eurostile so the layout does not shift).
-     NOTE: the Eurostile-Bold file on this Mac carries fsType=4
-     ("print & preview only"), so it is referenced by local name ONLY and is
-     deliberately NOT self-hosted. Serving it needs a webfont licence. */
-  --font-display: "Eurostile Extended", "Eurostile LT Std Ext Two",
-                  "Eurostile-Bold", "Eurostile", "Michroma",
-                  "Arial Black", sans-serif;
+  /* Display — Space Grotesk, freely licensed (SIL OFL) and served to every
+     visitor, so there is no local-install or webfont-licence problem. */
+  --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
   /* Body — Avenir ships with macOS/iOS, so Apple visitors get the real face.
      Mulish is the loaded fallback for everyone else. */
   --font-body:    "Avenir Next", "Avenir", "Mulish",
                   -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-/* ---------------------------------------------------------------------------
-   FALLBACK DISPLAY FACE
-   Michroma (SIL OFL — see MEDIA/fonts/Michroma-OFL.txt) self-hosted so it can
-   carry a size-adjust. Michroma sets 1.44x wider than Eurostile-Bold at the
-   same font-size; 72% brings the two within ~4% of each other, so headlines
-   occupy the same space whether or not the visitor has Eurostile.
-   ------------------------------------------------------------------------ */
-@font-face {
-  font-family: "Michroma";
-  src: url("MEDIA/fonts/michroma.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  size-adjust: 72%;
 }
 
 /* ---------------------------------------------------------------------------
@@ -173,12 +151,10 @@ img { height: auto; }
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   color: var(--text-strong);
-  font-weight: 400;            /* the display face is already bold by design */
+  font-weight: 700;
   text-transform: uppercase;
   line-height: 1.12;           /* all-caps has no descenders, so tighter */
-  letter-spacing: 0.015em;     /* caps need a little air to stay legible */
-  word-spacing: 0.14em;        /* Eurostile's word space is very tight —
-                                  without this, "reliable, high" runs together */
+  letter-spacing: 0.01em;      /* caps need a little air to stay legible */
   margin: 0;
   text-wrap: balance;
 }
@@ -591,15 +567,12 @@ button { font: inherit; color: inherit; }
 .hero__title {
   color: var(--text-on-dark);
   font-size: clamp(1.75rem, 1.05rem + 3.1vw, 3.25rem);
-  font-weight: 400;
-  letter-spacing: 0.01em;   /* large caps need less tracking than small ones */
+  font-weight: 700;
+  letter-spacing: 0;        /* large caps need less tracking than small ones */
   max-width: 15ch;
 }
 
-.hero__title strong {
-  font-weight: 400;   /* colour carries the emphasis, not weight */
-  color: var(--accent);
-}
+.hero__title strong { color: var(--accent); }
 
 .hero__lede {
   margin-top: var(--space-6);
@@ -631,9 +604,8 @@ button { font: inherit; color: inherit; }
 
 .spec__value {
   font-family: var(--font-display);
-  word-spacing: 0.14em;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--text-on-dark);
   letter-spacing: 0.02em;
 }
@@ -974,9 +946,8 @@ button { font: inherit; color: inherit; }
 .fact__value {
   margin-top: var(--space-2);
   font-family: var(--font-display);
-  word-spacing: 0.14em;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--text-strong);
 }
 
@@ -1144,11 +1115,10 @@ select.field__input option { color: #111; background: #fff; }
    ------------------------------------------------------------------------ */
 .manifesto {
   font-family: var(--font-display);
-  word-spacing: 0.14em;   /* see the note on the heading rule */
   font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
   line-height: 1.3;
   letter-spacing: 0;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--text-strong);
   max-width: 26ch;
   margin-bottom: var(--space-8);

@@ -48,24 +48,20 @@ Taken from `BRANDING/COLOR PALETTE/`. They live as CSS custom properties under
 The light blue is only used on dark surfaces (6.6:1). On light surfaces the
 steel blue is the text-safe accent (6.1:1). Do not swap them.
 
-## Fonts — read before deploying
+## Fonts
 
-The site names three faces:
+Two faces, both fine to serve:
 
-- **Eurostile** (display) — commercial. Referenced by local family name only, so
-  it renders for visitors who happen to have it installed. It is deliberately
-  **not** self-hosted: the available file carries `fsType` 4, "print & preview
-  only", which does not permit web embedding. Shipping it needs a webfont
-  licence from Monotype.
+- **Space Grotesk** (headings) — SIL Open Font License, loaded from Google
+  Fonts, so every visitor sees it.
 - **Avenir** (body) — commercial, but ships with macOS and iOS, so Apple
-  visitors get the real face.
-- **Michroma** (display fallback) and **Mulish** (body fallback) — both freely
-  licensed. Michroma is self-hosted with `size-adjust: 72%` so it occupies the
-  same width as Eurostile and headlines do not reflow.
+  visitors get the real face. **Mulish** is the loaded fallback everywhere
+  else.
 
-Known quirk of the current Eurostile file: its em dash is a blank glyph, and its
-word space is very tight. Headings therefore avoid em dashes, and everything set
-in the display face carries `word-spacing: 0.14em`.
+An earlier revision used Eurostile for headings. It was dropped: the only
+available file carried `fsType` 4 ("print & preview only"), which does not
+permit web embedding, and it had a blank em-dash glyph and a very tight word
+space that needed CSS compensation. None of that applies to Space Grotesk.
 
 ## Still to fill in
 
