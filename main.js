@@ -346,9 +346,22 @@
 
     var curX = 0, curY = 0, queued = false;
 
+    // Sections that need the lighter blue.
+    var DARK = '.hero, .band--inverse, .cta-band, .site-footer, .mobile-nav';
+    var onDark = null;
+
     function drawCursor() {
       queued = false;
       cursorEl.style.transform = 'translate3d(' + curX + 'px,' + curY + 'px,0)';
+
+      // Which section is under the pointer decides the dot colour. Hit-testing
+      // costs a layout read, so only write the class when it actually changes.
+      var under = document.elementFromPoint(curX, curY);
+      var isDark = !!(under && under.closest && under.closest(DARK));
+      if (isDark !== onDark) {
+        onDark = isDark;
+        cursorEl.classList.toggle('is-on-dark', isDark);
+      }
     }
 
     // Coalesce to one paint per frame; mousemove fires far more often than that.
