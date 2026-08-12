@@ -102,6 +102,19 @@
   --card-line:        var(--brand-sky-line);
   --card-hover:       var(--brand-steel);
 
+  /* Shared panel treatment — one diagonal wash, used by every card on the
+     page so the sections read as one family. Two variants because half the
+     cards sit on white and half on the charcoal. */
+  --panel-wash-light: linear-gradient(160deg,
+                        rgba(117, 183, 217, 0.20) 0%,
+                        rgba(117, 183, 217, 0.05) 46%,
+                        rgba(117, 183, 217, 0.05) 100%);
+  --panel-wash-dark:  linear-gradient(160deg,
+                        rgba(117, 183, 217, 0.10) 0%,
+                        rgba(255, 255, 255, 0.02) 46%,
+                        rgba(255, 255, 255, 0.02) 100%);
+  --panel-line-dark:  rgba(255, 255, 255, 0.09);
+
   --focus:            var(--brand-sky);
 
   /* Spacing scale — marketing-page density (spacious end of the scale). */
@@ -638,32 +651,36 @@ button { font: inherit; color: inherit; }
    ------------------------------------------------------------------------ */
 .grid-cards {
   display: grid;
-  gap: 1px;
-  background: var(--card-line);
-  border: 1px solid var(--card-line);
+  gap: var(--space-5);
 }
 
 @media (min-width: 640px) { .grid-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1024px) { .grid-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 .card {
+  position: relative;
+  overflow: hidden;
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
   min-height: 240px;
+  border: 1px solid var(--card-line);
+  border-radius: var(--radius-lg);
+  background: var(--panel-wash-light);
   transition: background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
               color var(--dur) var(--ease);
 }
 
-.card { background: var(--card-surface); }
+/* Copy sits above the outlined numeral behind it. */
+.card__icon, .card__title, .card__body, .card__list { position: relative; }
 
 /* Hover fills the card with the steel blue and flips the type to white.
    Nothing is hidden behind hover — this is colour only, so touch users
    lose no information. */
-.card:hover { background: var(--card-hover); }
+.card:hover { background: var(--card-hover); border-color: var(--card-hover); }
 .card:hover .card__title,
-.card:hover .card__index,
 .card:hover .card__icon { color: var(--brand-white); }
 .card:hover .card__body { color: rgba(255, 255, 255, 0.88); }
 .card:hover .card__list {
@@ -672,11 +689,19 @@ button { font: inherit; color: inherit; }
 }
 
 .card__index {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.14em;
-  color: var(--accent-on-light);
+  position: absolute;
+  top: -14px;
+  right: 4px;
+  font-family: var(--font-display);
+  font-size: 5.5rem;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(66, 103, 122, 0.26);
+  pointer-events: none;
+  transition: -webkit-text-stroke-color var(--dur) var(--ease);
 }
+
+.card:hover .card__index { -webkit-text-stroke-color: rgba(255, 255, 255, 0.45); }
 
 .card__icon { width: 32px; height: 32px; color: var(--accent-on-light); }
 
@@ -713,23 +738,15 @@ button { font: inherit; color: inherit; }
   align-items: center;
 }
 
-/* Illustration removed — the copy keeps its right-hand position so the
-   section still reads as the counterpoint to the hero. */
+/* Copy sits on the left; the right half is deliberately left clear for the
+   valve illustration to drop into. */
 @media (min-width: 900px) {
-  .about__copy { max-width: 68ch; margin-left: auto; }
+  .about__copy { max-width: 64ch; margin-right: auto; }
 }
 
-/* Copy column, right-aligned. Measures stay capped and pushed to the right
-   edge so the ragged-left edge reads as deliberate rather than accidental. */
-.about__copy { text-align: right; }
+.about__copy { text-align: left; }
 
 .about__copy .section-head { margin-bottom: var(--space-7); }
-
-/* The eyebrow's leading dash flips to the trailing side when right-aligned. */
-.about__copy .eyebrow { flex-direction: row-reverse; }
-
-.about__copy .section-title,
-.about__copy .section-lede { margin-left: auto; }
 
 .about__text {
   display: grid;
@@ -738,7 +755,6 @@ button { font: inherit; color: inherit; }
 }
 
 .about__text p {
-  margin-left: auto;
   max-width: 58ch;
   color: var(--text-muted);
 }
@@ -761,21 +777,17 @@ button { font: inherit; color: inherit; }
   flex-direction: column;
   gap: var(--space-5);
   padding: var(--space-6);
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--panel-wash-dark);
+  border: 1px solid var(--panel-line-dark);
   border-radius: var(--radius-lg);
-  transition: background-color var(--dur) var(--ease),
-              border-color var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease);
 }
 
 @media (min-width: 900px) {
   .duo__item { padding: var(--space-7); }
 }
 
-.duo__item:hover {
-  background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(255, 255, 255, 0.16);
-}
+.duo__item:hover { border-color: rgba(117, 183, 217, 0.42); }
 
 .duo__tag {
   align-self: flex-start;
@@ -910,8 +922,6 @@ button { font: inherit; color: inherit; }
   .fact-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-.about__copy .fact-row { text-align: right; }
-
 .fact__label {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -978,15 +988,15 @@ button { font: inherit; color: inherit; }
   gap: var(--space-2);
   padding: var(--space-5);
   min-height: 48px;
-  border: 1px solid var(--line-dark);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--panel-line-dark);
+  border-radius: var(--radius-lg);
+  background: var(--panel-wash-dark);
   text-decoration: none;
   color: var(--text-on-dark);
   transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
 }
 
-a.contact-card:hover { border-color: var(--accent); background: rgba(117, 183, 217, 0.08); }
+a.contact-card:hover { border-color: rgba(117, 183, 217, 0.42); }
 
 .contact-card__icon { width: 20px; height: 20px; color: var(--accent); }
 
@@ -1005,9 +1015,9 @@ a.contact-card:hover { border-color: var(--accent); background: rgba(117, 183, 2
   display: grid;
   gap: var(--space-5);
   padding: var(--space-6);
-  border: 1px solid var(--line-dark);
+  border: 1px solid var(--panel-line-dark);
   border-radius: var(--radius-lg);
-  background: rgba(40, 50, 56, 0.7);
+  background: var(--panel-wash-dark);
 }
 
 @media (min-width: 640px) { .rfq { padding: var(--space-7); } }
@@ -1193,9 +1203,9 @@ select.field__input option { color: #111; background: #fff; }
   flex-direction: column;
   gap: var(--space-4);
   padding: var(--space-6);
-  background: var(--card-surface);
+  background: var(--panel-wash-light);
   border: 1px solid var(--card-line);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   transition: background-color var(--dur) var(--ease),
               border-color var(--dur) var(--ease),
               color var(--dur) var(--ease),
