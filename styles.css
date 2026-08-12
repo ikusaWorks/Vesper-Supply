@@ -1357,8 +1357,11 @@ select.field__input option { color: #111; background: #fff; }
    CUSTOM DOT CURSOR
    Only on devices with a fine pointer — never on touch, where there is no
    cursor to replace and hiding it would strand the user.
-   mix-blend-mode: difference means one white dot stays visible against both
-   the charcoal sections and the white ones, with no per-section overrides.
+   The dot swaps between the two brand blues depending on whether it is over
+   a dark or a light section, so it stays clearly visible on both: sky blue
+   reads 6.6:1 on the charcoal, steel blue 6.1:1 on white. (A blend mode was
+   tried first and could not work here — the transform on the parent creates
+   a stacking context, which traps the blend so it never sees the page.)
    ------------------------------------------------------------------------ */
 .cursor { display: none; }
 
@@ -1393,10 +1396,14 @@ select.field__input option { color: #111; background: #fff; }
     height: 10px;
     margin: -5px 0 0 -5px;
     border-radius: var(--radius-pill);
-    background: var(--brand-white);
-    mix-blend-mode: difference;
-    transition: transform 200ms var(--ease), opacity 200ms var(--ease);
+    background: var(--brand-steel);
+    transition: transform 200ms var(--ease),
+                opacity 200ms var(--ease),
+                background-color 160ms var(--ease);
   }
+
+  /* Over a dark section, switch to the lighter blue. */
+  .cursor.is-on-dark .cursor__dot { background: var(--brand-sky); }
 
   /* Grows over anything clickable. */
   .cursor.is-active .cursor__dot { transform: scale(3.4); }
