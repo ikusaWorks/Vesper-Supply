@@ -732,6 +732,41 @@ button { font: inherit; color: inherit; }
    ABOUT LAYOUT — illustration left, copy right.
    Mirrors the hero (copy left, globe right) so the two sections zig-zag.
    ------------------------------------------------------------------------ */
+/* Photographic backdrop -------------------------------------------------
+   The section is white with dark text, so the photo sits well back. The
+   white gradient is part of the same background shorthand, compositing
+   straight over the image — layering a translucent element on top of an
+   already-faded image reduces it twice and it disappears. Weighted so the
+   left (behind the copy) stays clean and the ship reads on the right. */
+#about { position: relative; isolation: isolate; overflow: hidden; }
+
+.about__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(100deg,
+      rgba(255, 255, 255, 0.97) 0%,
+      rgba(255, 255, 255, 0.94) 34%,
+      rgba(255, 255, 255, 0.78) 66%,
+      rgba(255, 255, 255, 0.68) 100%),
+    url("MEDIA/about-ship.jpg") center / cover no-repeat;
+}
+
+/* Narrow screens: the copy spans the full width, so the wash has to be even
+   across it instead of weighted to one side. */
+@media (max-width: 899px) {
+  .about__bg {
+    background:
+      linear-gradient(180deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.90) 55%,
+        rgba(255, 255, 255, 0.86) 100%),
+      url("MEDIA/about-ship.jpg") center / cover no-repeat;
+  }
+}
+
 .about__layout {
   display: grid;
   gap: var(--space-7);
