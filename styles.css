@@ -773,20 +773,9 @@ button { font: inherit; color: inherit; }
   align-items: center;
 }
 
+/* Single column: the copy sits left and the photograph carries the right. */
 @media (min-width: 900px) {
-  .about__layout {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
-    gap: var(--space-8);
-  }
-}
-
-/* Technical drawing: atmosphere, not information. Below the copy on mobile,
-   beside it on desktop. The fade at the pipe ends is baked into the SVG. */
-.about__art { order: 2; }
-.valve { width: 100%; height: auto; }
-
-@media (min-width: 900px) {
-  .about__art { order: 0; }
+  .about__copy { max-width: 62ch; margin-right: auto; }
 }
 
 .about__copy { text-align: left; }
