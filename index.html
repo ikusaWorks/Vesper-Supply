@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vesper Supply — American Industrial Equipment for Oil &amp; Gas</title>
+<meta name="description" content="Texas-based industrial procurement. Vesper Supply sources instrumentation, automation, electrical equipment, smart valves, cable and actuators from U.S. manufacturers and delivers them to oil and gas operations in Venezuela and across South America.">
+
+<meta property="og:title" content="Vesper Supply — American Industrial Equipment for Oil &amp; Gas">
+<meta property="og:description" content="Texas-based industrial procurement bridging American manufacturers and South American energy operations.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Michroma is self-hosted (see @font-face in styles.css) so it can be
+     width-matched to Eurostile. Mulish stands in for Avenir on non-Apple
+     devices. Eurostile and Avenir are commercial faces — see the font token
+     block in styles.css for what can and cannot be served. -->
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ═══════════════════════════════════════════════════════ HEADER ═══════ -->
+<header class="site-header" id="siteHeader">
+  <div class="shell site-header__inner">
+
+    <!-- The lockup collapses to the V isotype once About reaches the header
+         (main.js toggles .is-compact on the header). Both images are stacked
+         and crossfaded, so nothing reflows around them.
+         alt is empty on both — the link's aria-label already names it, and
+         two identical alts would be announced twice. -->
+    <a class="logo" href="#top" aria-label="Vesper Supply — home">
+      <span class="logo__stack">
+        <img class="logo__full" src="MEDIA/logo/vesper-lockup-light.png"
+             alt="" width="862" height="178">
+        <img class="logo__mark" src="MEDIA/logo/vesper-isotype-light.png"
+             alt="" width="340" height="235">
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__link" href="#about">About Us</a>
+      <a class="nav__link" href="#mission">Mission &amp; Vision</a>
+      <a class="nav__link" href="#solutions">Solutions</a>
+      <a class="nav__link" href="#contact">Contact</a>
+    </nav>
+
+    <a class="btn btn--primary header__cta" href="#contact">
+      Request a quote
+      <svg class="btn__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav">
+      <span class="visually-hidden">Toggle menu</span>
+      <span class="menu-toggle__bars" aria-hidden="true"></span>
+    </button>
+
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <div class="shell">
+    <a class="mobile-nav__link" href="#about">About Us</a>
+    <a class="mobile-nav__link" href="#mission">Mission &amp; Vision</a>
+    <a class="mobile-nav__link" href="#solutions">Solutions</a>
+    <a class="mobile-nav__link" href="#contact">Contact</a>
+    <a class="btn btn--primary" href="#contact">Request a quote</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ═══════════════════════════════════════════════════════════ HERO ═══════ -->
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="shell hero__inner">
+
+    <div>
+      <p class="eyebrow reveal">Houston, Texas &nbsp;→&nbsp; Venezuela</p>
+
+      <h1 class="hero__title reveal" data-delay="1">
+        American equipment.<br>
+        <strong>Delivered south.</strong>
+      </h1>
+
+      <p class="hero__lede reveal" data-delay="2">
+        Vesper Supply is a Texas-based procurement partner for oil and gas operators.
+        We source instrumentation, automation and flow control hardware from U.S.
+        manufacturers — then handle the documentation, export and delivery that gets
+        it to your site.
+      </p>
+
+      <div class="hero__actions reveal" data-delay="3">
+        <a class="btn btn--primary" href="#contact">
+          Request a quote
+          <svg class="btn__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn btn--ghost" href="#solutions">View solutions</a>
+      </div>
+
+      <div class="hero__specs reveal" data-delay="4">
+        <div class="spec">
+          <div class="spec__value">Houston, TX</div>
+          <div class="spec__label">Headquarters</div>
+        </div>
+        <div class="spec">
+          <div class="spec__value">U.S. OEMs</div>
+          <div class="spec__label">Sourcing base</div>
+        </div>
+        <div class="spec">
+          <div class="spec__value">Venezuela</div>
+          <div class="spec__label">Primary corridor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SIGNATURE ELEMENT ──────────────────────────────────────────
+             Orthographic globe centred on 16°N 78°W, so the Gulf coast and the
+             northern coast of South America are both in view. Coastlines are
+             real Natural Earth 1:50m data, projected and simplified at build
+             time — no mapping library at runtime. ─────────────────────────── -->
+    <div class="globe reveal" data-delay="2" id="corridorDiagram">
+      <div class="globe__caption">
+        <span>Supply corridor</span>
+        <span>Houston → Venezuela</span>
+      </div>
+
+      <svg class="globe__svg" viewBox="0 0 520 520" role="img"
+           aria-label="Globe centred on the Gulf of Mexico and Caribbean, showing the supply route from Houston, Texas to the northern coast of Venezuela.">
+        <defs>
+          <radialGradient id="globeBody" cx="34%" cy="28%" r="78%">
+            <stop offset="0%"   stop-color="#35505F"/>
+            <stop offset="52%"  stop-color="#22384A"/>
+            <stop offset="100%" stop-color="#131C25"/>
+          </radialGradient>
+          <radialGradient id="globeLimb" cx="50%" cy="50%" r="50%">
+            <stop offset="70%"  stop-color="#000" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
+          </radialGradient>
+          <radialGradient id="globeHalo" cx="50%" cy="50%" r="50%">
+            <stop offset="72%" stop-color="#75B7D9" stop-opacity="0"/>
+            <stop offset="88%" stop-color="#75B7D9" stop-opacity="0.16"/>
+            <stop offset="100%" stop-color="#75B7D9" stop-opacity="0"/>
+          </radialGradient>
+          <clipPath id="globeClip"><circle cx="260" cy="260" r="236"/></clipPath>
+        </defs>
+
+        <circle cx="260" cy="260" r="262" fill="url(#globeHalo)"/>
+        <circle cx="260" cy="260" r="236" fill="url(#globeBody)"/>
+
+        <g clip-path="url(#globeClip)">
+          <path class="globe__graticule" d="M73 116 L88 98 L106 82 L124 69 L134 62 L155 52 L177 43 L189 40 L212 35 L236 33 L260 33M27 299 L25 275 L25 252 L27 228 L32 205 L40 182 L50 160 L62 139 L77 120 L93 102 L112 86 L132 72 L153 59 L176 49 L199 42 L223 36 L248 34 L260 33M101 435 L86 418 L78 410 L66 391 L55 371 L50 360 L47 349 L40 327 L38 315 L36 292 L36 280 L37 256 L40 232 L47 209 L50 197 L66 164 L78 143 L101 114 L128 88 L158 67 L191 50 L202 46 L225 39 L248 35 L260 33M161 474 L144 464 L135 459 L128 452 L113 438 L100 422 L89 404 L75 374 L66 342 L62 307 L63 272 L69 236 L79 200 L94 166 L113 135 L128 115 L144 97 L170 74 L199 55 L229 41 L250 35 L260 33M196 487 L188 484 L174 477 L167 472 L154 461 L137 440 L128 424 L119 406 L110 376 L104 343 L102 320 L102 296 L106 260 L113 224 L123 188 L137 155 L148 134 L161 114 L181 88 L203 66 L227 48 L243 39 L260 33M227 494 L222 493 L211 488 L197 478 L188 467 L180 455 L170 432 L162 405 L158 385 L155 364 L153 330 L154 282 L158 245 L165 209 L173 174 L180 151 L188 130 L202 101 L211 84 L222 69 L232 56 L243 45 L260 33M245 495 L238 491 L231 481 L224 459 L219 437 L215 410 L212 369 L211 335 L212 287 L214 238 L218 202 L224 155 L229 124 L235 95 L245 64 L252 46 L260 33M264 496 L266 492 L267 482 L270 438 L272 371 L272 289 L271 203 L268 125 L264 64 L260 33M283 495 L286 494 L293 490 L303 480 L312 464 L317 451 L321 435 L327 409 L331 368 L333 334 L332 286 L329 249 L323 200 L314 154 L306 123 L296 94 L286 70 L275 51 L268 41 L260 33M306 491 L312 489 L324 484 L341 471 L356 452 L364 437 L371 421 L377 402 L382 382 L387 349 L389 315 L387 278 L382 242 L375 206 L364 171 L356 149 L346 128 L336 109 L324 91 L306 68 L293 55 L280 44 L260 33M331 485 L340 482 L356 474 L370 464 L384 451 L402 429 L416 402 L427 371 L433 338 L435 304 L434 280 L432 255 L424 219 L416 196 L407 173 L390 141 L370 111 L348 85 L323 64 L305 52 L287 43 L260 33M375 466 L384 461 L401 448 L409 441 L423 426 L430 417 L442 399 L447 389 L456 369 L463 347 L466 336 L470 301 L469 266 L463 230 L452 195 L436 161 L416 130 L392 102 L375 86 L355 71 L325 53 L293 41 L271 35 L260 33M454 395 L466 375 L471 365 L480 343 L486 320 L490 297 L491 285 L491 274 L490 250 L486 226 L480 203 L476 191 L466 169 L454 148 L447 138 L432 118 L414 100 L396 84 L386 77 L365 64 L354 58 L343 53 L320 44 L296 38 L272 34 L260 33M491 210 L488 198 L480 176 L475 165 L464 144 L451 124 L443 115 L427 97 L408 82 L388 68 L367 56 L344 47 L333 43 L321 40 L297 35 L272 33 L260 33M410 78 L392 65 L372 53 L362 49 L340 41 L318 36 L295 33 L272 32 L260 33M350 42 L331 36 L321 33 L301 31 L281 31 L260 33M317 31 L301 28 L285 28 L268 31 L260 33M288 26 L277 27 L260 33M273 24 L268 26 L260 33M257 24 L258 26 L260 33M241 25 L249 26 L260 33M220 27 L227 27 L240 27 L260 33M197 33 L206 31 L224 29 L242 30 L260 33M155 49 L165 44 L185 38 L206 33 L227 31 L238 31 L260 33M158 473 L177 479 L201 485 L229 488 L260 489 L291 488 L319 485 L343 479 L362 473M101 435 L111 441 L125 447 L142 453 L162 458 L184 461 L208 464 L260 466 L312 464 L336 461 L358 458 L378 453 L395 447 L409 441 L419 435M60 385 L69 394 L83 402 L108 411 L131 417 L167 424 L197 427 L228 429 L260 430 L292 429 L323 427 L353 424 L389 417 L412 411 L431 404 L451 394 L460 385M33 325 L40 335 L47 341 L57 347 L83 358 L107 365 L146 373 L178 377 L213 380 L260 382 L296 381 L342 377 L374 373 L413 365 L437 358 L463 347 L473 341 L480 335 L487 325M24 260 L24 263 L27 270 L32 277 L40 283 L50 290 L62 295 L93 306 L121 313 L164 319 L211 324 L260 325 L309 324 L356 319 L389 315 L427 306 L458 295 L470 290 L480 283 L488 277 L493 270 L495 267 L496 260M32 198 L32 205 L35 211 L40 218 L47 224 L63 233 L91 243 L126 252 L167 259 L213 263 L260 264 L307 263 L353 259 L384 254 L421 246 L451 236 L463 230 L473 224 L480 218 L485 211 L488 205 L488 198M58 138 L56 144 L56 150 L58 155 L63 161 L69 167 L78 172 L101 182 L131 190 L167 197 L207 201 L260 203 L302 202 L343 198 L389 190 L419 182 L442 172 L451 167 L457 161 L462 155 L464 150 L464 144 L462 138M97 90 L94 95 L93 100 L94 104 L97 109 L101 114 L108 118 L125 127 L148 134 L177 139 L208 143 L243 145 L277 145 L312 143 L343 139 L372 134 L395 127 L412 118 L419 114 L423 109 L426 104 L427 100 L426 95 L421 88 L99 88 L97 90M145 57 L143 60 L142 64 L143 67 L145 70 L152 77 L165 83 L181 88 L201 92 L224 94 L248 96 L272 96 L296 94 L319 92 L339 88 L355 83 L368 77 L375 70 L377 67 L378 64 L377 60 L375 57 L370 52 L365 49 L155 49 L150 52 L145 57M200 37 L199 41 L200 44 L204 48 L211 51 L229 55 L254 58 L279 57 L301 53 L316 48 L320 44 L321 41 L320 38 L317 35 L305 30 L288 26 L266 24 L244 25 L224 27 L209 32 L204 34 L200 37"/>
+          <path class="globe__land" d="M273 463L271 463L272 460L274 460L273 463ZM308 140L309 141L310 139L311 140L307 141L309 136L308 140ZM263 250L267 252L263 253L259 251L263 250ZM306 249L308 249L302 251L302 249L306 249ZM300 139L305 139L304 140L300 140L298 138L299 137L300 139ZM282 479L290 482L275 482L278 482L278 481L281 482L279 481L281 480L279 480L282 479ZM245 230L253 232L275 243L261 244L263 241L260 240L257 237L245 234L245 232L234 235L237 232L245 230ZM301 36L315 38L302 37L305 36L301 36ZM445 116L449 122L446 121L445 116ZM295 67L296 68L294 69L291 67L295 67ZM147 112L149 113L148 121L146 119L148 117L146 118L145 116L146 115L144 113L146 112L145 110L147 112ZM283 244L291 244L297 249L296 250L287 250L286 253L283 250L276 251L274 250L282 249L281 246L278 244L283 244ZM372 318L377 318L375 323L369 325L368 319L372 318ZM379 75L382 78L383 77L387 82L401 87L406 92L405 99L402 92L402 93L399 93L396 88L391 84L391 86L383 81L378 76L379 75ZM388 86L391 87L397 93L397 98L394 96L394 94L393 95L392 92L388 90L389 89L387 86L388 86ZM177 44L165 50L169 48L165 52L158 53L167 47L163 49L177 44ZM344 65L350 66L351 72L346 73L344 70L341 71L343 70L341 69L339 70L338 68L339 68L337 67L343 69L341 67L344 67L342 66L344 65ZM261 224L260 226L259 225L259 222L261 224ZM328 281L324 282L326 281L325 279L328 278L328 281ZM206 323L208 326L206 327L205 327L206 326L205 323L206 323ZM249 66L251 66L250 64L252 64L251 63L252 62L251 62L256 60L257 63L256 65L263 63L263 65L265 64L264 66L268 65L267 67L270 66L269 69L272 67L273 68L271 69L275 69L273 70L276 70L273 72L278 74L280 73L284 75L283 76L287 76L285 77L286 79L284 79L285 81L281 79L282 78L275 78L285 85L285 86L283 85L284 88L277 85L283 90L272 87L268 83L260 84L261 81L264 82L264 81L268 81L266 79L269 76L265 71L262 72L263 71L259 68L259 69L255 69L256 70L245 67L245 66L248 66L245 65L247 61L252 60L249 62L251 66L249 66ZM264 43L269 44L266 45L268 45L265 48L261 49L263 50L260 50L263 50L262 52L256 53L260 54L249 54L252 53L251 52L256 52L252 51L257 50L255 50L254 47L258 49L257 47L261 46L254 47L257 46L253 47L256 46L252 45L259 45L258 43L264 43ZM239 64L241 68L239 69L242 70L241 70L242 73L244 70L245 71L245 76L250 72L250 69L255 71L253 73L255 76L251 78L249 77L250 79L246 78L247 79L244 81L238 79L244 81L241 84L237 85L232 83L237 86L231 88L226 93L225 97L225 100L228 99L227 104L232 104L242 109L243 111L250 111L250 120L253 122L253 124L256 125L256 123L257 123L258 124L259 120L256 113L261 111L263 107L262 103L259 100L261 97L260 89L268 89L273 92L277 93L277 95L275 96L278 98L277 99L280 99L280 102L285 99L286 100L287 94L292 99L291 100L293 99L292 101L295 101L294 102L297 105L295 104L300 107L300 110L302 109L302 110L303 109L308 110L302 114L303 115L309 112L310 114L311 113L313 114L313 117L315 118L306 125L290 126L283 134L279 133L282 134L282 135L270 145L281 138L286 132L293 130L297 131L297 132L291 134L297 135L295 137L298 140L308 143L300 146L297 150L295 149L295 146L302 143L298 143L298 141L295 144L291 144L291 146L288 148L287 147L283 150L281 155L285 157L280 157L280 159L273 161L272 159L272 165L270 168L268 166L269 164L268 165L270 170L267 175L268 172L265 169L267 166L265 167L265 171L262 170L263 168L262 170L266 172L263 171L266 175L262 174L267 176L268 180L267 177L267 179L264 178L267 180L266 182L263 181L265 184L262 184L260 187L250 193L248 199L252 216L251 222L248 222L246 219L246 216L243 213L244 211L242 211L243 207L239 202L234 204L233 201L227 201L228 200L225 201L225 199L224 201L216 201L220 202L218 203L220 206L217 203L217 205L214 205L211 202L209 203L204 201L201 203L200 202L196 206L194 205L190 210L189 210L190 216L186 229L191 245L196 249L204 247L208 248L211 245L213 238L226 236L226 239L223 244L222 250L221 247L220 249L220 256L217 259L232 260L239 263L239 267L236 279L243 289L248 289L255 287L261 288L265 293L264 290L270 287L270 282L273 280L275 281L276 279L279 279L286 274L288 276L284 278L286 282L284 285L286 288L288 285L286 280L293 278L291 276L292 275L294 278L299 279L300 282L307 281L312 283L317 281L315 280L324 279L320 280L321 282L329 284L326 288L327 288L331 287L337 290L338 292L338 296L340 294L343 296L343 299L344 297L354 296L355 298L356 296L366 302L368 309L371 311L371 313L363 324L361 325L368 322L369 326L373 324L372 328L378 319L380 318L390 321L389 327L391 324L391 325L394 323L405 322L414 328L419 328L420 335L418 344L407 359L405 359L401 377L392 393L388 397L379 399L364 408L361 418L348 430L354 424L352 424L345 433L338 438L327 439L326 437L327 433L325 438L328 441L328 445L323 449L310 451L308 456L300 456L299 459L303 459L303 460L299 460L301 461L296 465L290 468L294 470L293 471L284 475L285 475L282 478L284 479L276 481L274 481L277 480L272 481L276 479L270 480L274 479L268 477L271 477L269 476L271 475L269 472L273 472L269 472L270 470L266 470L272 467L270 469L272 468L272 469L276 465L274 465L277 459L273 460L273 458L275 454L274 449L283 437L282 431L288 415L290 397L290 393L286 389L268 380L257 358L252 351L247 348L248 347L247 342L253 335L252 333L251 336L248 334L248 329L251 327L251 322L256 320L258 316L261 314L264 309L262 308L263 299L258 293L259 291L261 292L255 289L250 292L252 295L250 296L243 291L240 292L232 284L231 283L232 285L231 286L229 284L229 280L221 272L223 272L222 270L218 271L207 267L194 256L189 258L183 256L164 244L158 237L160 231L158 226L153 215L149 212L150 208L144 197L144 188L140 184L138 192L143 206L144 216L146 217L147 222L145 223L141 215L140 208L134 200L137 201L138 198L135 192L135 177L128 171L129 159L132 157L128 157L130 148L134 139L143 127L144 128L143 127L146 120L149 122L146 125L150 123L152 117L150 117L151 115L149 115L151 112L148 113L149 111L147 110L150 109L148 109L152 105L148 108L151 104L151 102L152 103L153 101L149 102L149 101L155 96L153 97L156 95L152 97L155 94L152 94L154 93L155 89L159 83L156 86L157 83L154 85L155 80L156 79L154 79L155 78L152 77L154 75L152 75L153 72L149 74L144 74L153 70L130 78L125 78L135 75L141 72L138 72L140 70L138 70L145 66L142 66L148 62L160 58L158 57L163 53L166 53L165 55L165 56L168 54L167 55L175 49L186 49L184 52L187 56L188 61L192 60L191 61L197 60L190 62L200 60L199 63L202 62L200 63L203 63L209 67L206 70L213 70L214 75L216 71L220 70L215 70L220 69L223 73L229 72L230 74L229 72L233 72L231 76L238 70L235 68L236 65L239 64ZM236 59L238 59L236 61L238 62L233 64L231 61L234 61L233 59L236 59ZM248 81L256 85L254 86L250 84L246 87L246 85L243 85L247 79L248 81ZM264 73L264 75L262 76L261 74L264 73ZM258 61L262 62L258 63L257 61L258 61ZM241 54L239 57L237 56L239 55L235 55L238 53L239 55L239 53L241 54ZM241 48L242 51L239 50L241 48ZM251 46L255 49L248 51L247 49L250 49L247 49L247 47L251 46ZM245 53L249 55L247 55L249 56L256 56L258 58L245 58L246 54L242 53L245 53ZM231 53L233 54L231 56L224 56L223 55L227 54L222 53L227 52L230 54L232 52L231 53ZM243 59L246 60L238 63L240 60L243 59ZM233 69L235 71L229 70L233 69ZM218 59L221 59L220 60L223 59L223 62L227 59L226 64L228 68L225 68L226 69L224 70L220 68L210 68L211 67L208 66L209 64L216 65L210 63L215 61L212 60L220 58L218 59ZM217 55L219 55L219 57L206 60L206 58L214 54L217 55ZM316 120L315 127L316 125L320 128L321 126L323 127L323 130L326 129L325 131L325 132L327 130L328 136L326 134L325 135L324 132L321 136L323 133L311 134L313 131L310 131L313 129L313 122L316 120ZM280 39L291 42L289 41L292 40L295 43L306 46L305 48L317 52L312 53L314 54L313 55L317 54L320 55L315 54L315 55L326 58L318 58L320 58L319 59L320 61L327 59L327 63L325 66L322 66L325 70L323 71L324 73L323 74L321 72L322 74L320 76L324 79L324 81L322 81L324 82L322 83L325 85L327 89L325 89L327 90L323 90L323 89L321 89L320 88L317 90L307 83L308 81L306 80L307 79L305 78L305 81L302 78L304 77L302 78L300 77L302 74L300 76L300 74L297 74L298 72L301 72L297 73L297 71L299 71L296 71L299 70L298 66L291 66L296 66L292 64L293 63L289 62L291 64L289 64L287 61L279 55L270 55L266 53L270 52L264 51L269 49L270 47L267 47L270 45L270 44L279 43L276 42L278 42L275 41L280 39ZM239 495L273 496L298 490L279 494L283 494L280 495L281 495L239 495ZM223 27L186 37L189 36L181 40L185 39L177 43L162 49L164 47L153 52L156 51L150 52L188 35L223 27ZM495 276L495 245L494 250L492 243L488 257L487 256L481 264L473 258L469 249L466 245L466 242L464 243L462 242L461 238L464 236L462 238L459 233L458 219L452 205L449 178L451 175L450 168L445 158L445 151L442 144L445 144L447 142L446 135L448 124L456 135L458 137L459 135L462 139L462 137L455 127L471 154L483 183L491 213L495 244L495 276ZM434 100L447 116L434 102L425 96L429 101L439 108L446 117L440 111L428 104L431 110L429 110L430 112L442 133L443 137L442 139L442 143L438 139L436 142L421 122L420 119L427 115L419 106L410 102L412 100L408 97L410 96L406 88L400 83L399 79L400 79L390 73L386 69L399 77L397 75L400 76L392 67L394 68L372 54L371 53L376 58L354 47L380 61L394 73L379 65L385 70L379 68L380 69L376 65L378 68L373 65L373 64L373 65L369 63L364 57L365 58L334 40L338 40L336 39L339 40L337 39L338 38L346 42L354 44L318 31L351 42L381 57L409 77L434 100Z"/>
+        </g>
+
+        <circle cx="260" cy="260" r="236" fill="url(#globeLimb)" pointer-events="none"/>
+        <circle class="globe__rim" cx="260" cy="260" r="236"/>
+
+        <path id="routePath" class="globe__route" pathLength="100" d="M198.8 201.3 L201.0 202.9 L203.1 204.4 L205.2 206.0 L207.4 207.6 L209.5 209.2 L211.7 210.8 L213.8 212.4 L216.0 214.0 L218.2 215.6 L220.4 217.3 L222.5 218.9 L224.7 220.5 L226.9 222.2 L229.1 223.8 L231.4 225.5 L233.6 227.1 L235.8 228.8 L238.0 230.5 L240.2 232.1 L242.4 233.8 L244.7 235.5 L246.9 237.2 L249.1 238.9 L251.4 240.6 L253.6 242.3 L255.8 244.0 L258.1 245.7 L260.3 247.4 L262.5 249.1 L264.8 250.8 L267.0 252.5 L269.2 254.2 L271.5 255.9 L273.7 257.6 L275.9 259.3 L278.2 261.0 L280.4 262.7 L282.6 264.4 L284.8 266.1 L287.0 267.8 L289.3 269.5 L291.5 271.2 L293.7 272.9 L295.9 274.6 L298.1 276.3 L300.2 278.0 L302.4 279.7 L304.6 281.4"/>
+        <circle class="globe__pulse" r="4.5">
+          <animateMotion dur="4.6s" repeatCount="indefinite" begin="1s" path="M198.8 201.3 L201.0 202.9 L203.1 204.4 L205.2 206.0 L207.4 207.6 L209.5 209.2 L211.7 210.8 L213.8 212.4 L216.0 214.0 L218.2 215.6 L220.4 217.3 L222.5 218.9 L224.7 220.5 L226.9 222.2 L229.1 223.8 L231.4 225.5 L233.6 227.1 L235.8 228.8 L238.0 230.5 L240.2 232.1 L242.4 233.8 L244.7 235.5 L246.9 237.2 L249.1 238.9 L251.4 240.6 L253.6 242.3 L255.8 244.0 L258.1 245.7 L260.3 247.4 L262.5 249.1 L264.8 250.8 L267.0 252.5 L269.2 254.2 L271.5 255.9 L273.7 257.6 L275.9 259.3 L278.2 261.0 L280.4 262.7 L282.6 264.4 L284.8 266.1 L287.0 267.8 L289.3 269.5 L291.5 271.2 L293.7 272.9 L295.9 274.6 L298.1 276.3 L300.2 278.0 L302.4 279.7 L304.6 281.4"/>
+        </circle>
+
+        <g class="globe__node">
+          <circle class="globe__node-halo" cx="198.8" cy="201.3" r="13"/>
+          <circle class="globe__node-ring" cx="198.8" cy="201.3" r="7"/>
+          <circle class="globe__node-core" cx="198.8" cy="201.3" r="3"/>
+          <text class="globe__label" x="184.8" y="183.3" text-anchor="end">Houston</text>
+          <text class="globe__label globe__label--sub" x="184.8" y="195.3" text-anchor="end">29.76° N / 95.36° W</text>
+        </g>
+
+        <g class="globe__node">
+          <circle class="globe__node-halo" cx="304.6" cy="281.4" r="13"/>
+          <circle class="globe__node-ring" cx="304.6" cy="281.4" r="7"/>
+          <circle class="globe__node-core" cx="304.6" cy="281.4" r="3"/>
+          <text class="globe__label" x="320.6" y="287.4">Venezuela</text>
+          <text class="globe__label globe__label--sub" x="320.6" y="299.4">10.50° N / 66.92° W</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ ABOUT US ═══════ -->
+<section class="band" id="about">
+  <div class="shell">
+
+    <div class="about__layout">
+
+      <div class="about__copy">
+
+        <div class="section-head reveal">
+          <p class="eyebrow">About us</p>
+          <h2 class="section-title">A procurement company built for one route.</h2>
+          <p class="section-lede">
+            Vesper Supply is a United States supply company based in Texas. We sell
+            instrumentation, automation, electrical equipment, smart valves, cable and
+            industrial hardware to oil and gas companies, and we exist to connect
+            American manufacturing with operators in Venezuela and the wider region.
+          </p>
+        </div>
+
+        <div class="about__text reveal" data-delay="1">
+          <p>
+            Cross-border industrial procurement usually breaks down in the gaps: a
+            distributor who cannot confirm origin, a shipment held for missing paperwork,
+            a warranty that evaporates because the goods moved through an unauthorized
+            channel. Those gaps are the whole job, and they are what we are organized
+            around.
+          </p>
+          <p>
+            We are an American company buying from American manufacturers. That is a
+            deliberately narrow position, and it is what lets us stand behind the origin,
+            the warranty and the documentation on everything we ship.
+          </p>
+        </div>
+
+        <div class="fact-row reveal" data-delay="2">
+          <div class="fact">
+            <div class="fact__label">Headquarters</div>
+            <div class="fact__value">Houston, Texas</div>
+          </div>
+          <div class="fact">
+            <div class="fact__label">Sector</div>
+            <div class="fact__value">Industrial procurement</div>
+          </div>
+          <div class="fact">
+            <div class="fact__label">Sourcing</div>
+            <div class="fact__value">100% U.S. manufacturers</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="block">
+
+      <div class="block__head reveal">
+        <h3 class="block__title">Who we serve</h3>
+        <div class="scroller__nav" id="industryNav">
+          <button class="scroller__btn" type="button" data-scroll="prev" aria-controls="industryScroller" aria-label="Show previous industries">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="scroller__btn" type="button" data-scroll="next" aria-controls="industryScroller" aria-label="Show next industries">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Horizontal card scroller. Native overflow scrolling means touch and
+           trackpad swipe work with no JS; the arrows and arrow-key handling
+           are progressive enhancement on top. -->
+      <div class="scroller reveal" id="industryScroller" data-delay="1"
+           role="region" aria-label="Industries we serve" tabindex="0">
+        <ul class="scroller__track">
+        <li class="ind-card">
+          <svg class="ind-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M16 4 L6 26 M16 4 L26 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.5 15h9M9 20.5h14M4 28h24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="4" r="1.8" fill="currentColor"/>
+          </svg>
+          <h4 class="ind-card__title">Upstream production</h4>
+          <p class="ind-card__body">Wellhead instrumentation, separation and gathering systems, and field automation for producing assets.</p>
+          <div class="ind-card__tags"><span>Wellhead</span><span>Separation</span><span>SCADA</span></div>
+        </li>
+        <li class="ind-card">
+          <svg class="ind-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="2" y="12" width="28" height="8" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M11 9.5v13M21 9.5v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <h4 class="ind-card__title">Midstream &amp; pipelines</h4>
+          <p class="ind-card__body">Pipeline measurement, custody transfer skids, and pump and compressor station controls.</p>
+          <div class="ind-card__tags"><span>Custody transfer</span><span>Metering</span><span>Stations</span></div>
+        </li>
+        <li class="ind-card">
+          <svg class="ind-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M4 28h24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="7" y="11" width="7" height="17" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="5" width="7" height="23" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M14 15h4M14 21h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <h4 class="ind-card__title">Refining &amp; petrochemical</h4>
+          <p class="ind-card__body">Process control hardware, safety instrumented systems, and turnaround spares held to spec.</p>
+          <div class="ind-card__tags"><span>SIS</span><span>Process control</span><span>Turnaround</span></div>
+        </li>
+        <li class="ind-card">
+          <svg class="ind-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M8 28 L16 6 L24 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 6v22M11 16h10M9.5 22h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <h4 class="ind-card__title">Power generation</h4>
+          <p class="ind-card__body">Switchgear, motor control centres and balance-of-plant instrumentation for generating sites.</p>
+          <div class="ind-card__tags"><span>Switchgear</span><span>MCC</span><span>BOP</span></div>
+        </li>
+        <li class="ind-card">
+          <svg class="ind-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M6 14h20l-2 8H8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 14V6M12 9h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 27c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <h4 class="ind-card__title">Offshore &amp; marine</h4>
+          <p class="ind-card__body">Corrosion-rated instrumentation and control equipment specified for offshore platforms and marine service.</p>
+          <div class="ind-card__tags"><span>Platform</span><span>Corrosion-rated</span><span>Marine</span></div>
+        </li>
+        <li class="ind-card">
+          <svg class="ind-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M3 28h26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M5 28V13a5 2.6 0 0 1 10 0v15" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M17 28V17a4.2 2.2 0 0 1 8.4 0v11" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5 18h10M17 22h8.4" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <h4 class="ind-card__title">Terminals &amp; storage</h4>
+          <p class="ind-card__body">Tank gauging, level measurement and loading automation for terminals and storage farms.</p>
+          <div class="ind-card__tags"><span>Tank gauging</span><span>Level</span><span>Loading</span></div>
+        </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ MISSION & VISION ═══════ -->
+<section class="band band--inverse" id="mission">
+  <div class="shell">
+
+    <div class="section-head reveal">
+      <p class="eyebrow">Mission &amp; vision</p>
+      <h2 class="section-title">What we are here to do, and where we are going.</h2>
+      <p class="section-lede">
+        One company, one route, and a standard we hold on both ends of it.
+      </p>
+    </div>
+
+    <div class="duo">
+
+      <article class="duo__item reveal">
+        <p class="duo__tag">Mission</p>
+        <p class="manifesto">
+          To provide oil and gas companies with reliable, high-quality equipment
+          made in the USA, backed by trustworthy service and fast delivery.
+        </p>
+        <p class="duo__body">
+          Every quote reflects real factory lead times, and every shipment carries the
+          documentation to prove what it is and where it came from. We would rather
+          give you a date we can hold than the date you want to hear.
+        </p>
+      </article>
+
+      <article class="duo__item reveal" data-delay="1" id="vision">
+        <p class="duo__tag">Vision</p>
+        <p class="manifesto">
+          To be the bridge between American manufacturing and South American energy.
+        </p>
+        <p class="duo__body">
+          We are building a supply route that industrial operators can rely on as
+          infrastructure rather than improvise around. The operators there deserve the
+          same directness a buyer in Houston takes for granted: a real manufacturer
+          behind the part, and a real warranty behind the manufacturer.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="block">
+      <h3 class="block__title reveal">What that means in practice</h3>
+
+      <ol class="practice">
+        <li class="practice__item reveal">
+          <span class="practice__index" aria-hidden="true">01</span>
+          <p class="practice__tag">Reliable</p>
+          <h4 class="practice__title">Dates you can schedule around</h4>
+          <p class="practice__text">
+            Quotes reflect real factory lead times. If a date moves, you hear it from us
+            before it affects your schedule.
+          </p>
+        </li>
+
+        <li class="practice__item reveal" data-delay="1">
+          <span class="practice__index" aria-hidden="true">02</span>
+          <p class="practice__tag">High quality</p>
+          <h4 class="practice__title">Quality with paperwork to prove it</h4>
+          <p class="practice__text">
+            American-manufactured hardware through authorized channels, shipped with
+            certificates of origin and the records to back the specification.
+          </p>
+        </li>
+
+        <li class="practice__item reveal" data-delay="2">
+          <span class="practice__index" aria-hidden="true">03</span>
+          <p class="practice__tag">Efficient</p>
+          <h4 class="practice__title">Service that answers</h4>
+          <p class="practice__text">
+            One company handles sourcing through delivery. No handoffs between vendors,
+            forwarders and agents when you need a straight answer.
+          </p>
+        </li>
+      </ol>
+    </div>
+
+    <ul class="values reveal" aria-label="Brand values">
+      <li class="value">Reliable</li>
+      <li class="value">Efficient</li>
+      <li class="value">American made</li>
+      <li class="value">High quality</li>
+      <li class="value">Connected</li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ SOLUTIONS ═══════ -->
+<section class="band" id="solutions">
+  <div class="shell">
+
+    <div class="section-head reveal">
+      <p class="eyebrow">Solutions</p>
+      <h2 class="section-title">Six categories, sourced from American manufacturers.</h2>
+      <p class="section-lede">
+        Every line item is quoted against U.S.-built hardware with documented origin —
+        no gray-market substitutes, no unverifiable supply chain.
+      </p>
+    </div>
+
+    <div class="grid-cards">
+
+      <article class="card reveal">
+        <span class="card__index">01</span>
+        <svg class="card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M16 16 L22 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="1.75" fill="currentColor"/>
+          <path d="M16 5v3M27 16h-3M16 27v-3M5 16h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3 class="card__title">Instrumentation</h3>
+        <p class="card__body">Pressure, temperature, flow and level measurement for process and custody transfer applications.</p>
+        <div class="card__list"><span>Transmitters</span><span>Gauges</span><span>Flow meters</span><span>Switches</span></div>
+      </article>
+
+      <article class="card reveal" data-delay="1">
+        <span class="card__index">02</span>
+        <svg class="card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="6" y="9" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M11 14h4M11 18h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M11 5v4M21 5v4M11 23v4M21 23v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3 class="card__title">Automation &amp; Control</h3>
+        <p class="card__body">Controllers, I/O, HMI and networking hardware for new builds and control system migrations.</p>
+        <div class="card__list"><span>PLC / DCS</span><span>I/O modules</span><span>HMI</span><span>Networking</span></div>
+      </article>
+
+      <article class="card reveal" data-delay="2">
+        <span class="card__index">03</span>
+        <svg class="card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M17.5 4 L9 18h6l-1.5 10L23 14h-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        <h3 class="card__title">Electrical Equipment</h3>
+        <p class="card__body">Distribution and control gear rated for hazardous and classified area installations.</p>
+        <div class="card__list"><span>Switchgear</span><span>Motor controls</span><span>Enclosures</span><span>Lighting</span></div>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__index">04</span>
+        <svg class="card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M4 16h6M22 16h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M10 10 L22 22 M22 10 L10 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M10 10v12M22 10v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.5" fill="currentColor"/>
+        </svg>
+        <h3 class="card__title">Smart Valves</h3>
+        <p class="card__body">Control and isolation valves supplied as engineered assemblies with positioners and diagnostics.</p>
+        <div class="card__list"><span>Control valves</span><span>Positioners</span><span>Ball / gate</span><span>Relief</span></div>
+      </article>
+
+      <article class="card reveal" data-delay="1">
+        <span class="card__index">05</span>
+        <svg class="card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M6 22c0-8 6-12 10-12s10 2 10 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <rect x="3" y="20" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="23" y="14" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <h3 class="card__title">Cable &amp; Wiring</h3>
+        <p class="card__body">Instrument, control and power cable with the glands, tray and terminations to install it.</p>
+        <div class="card__list"><span>Instrument cable</span><span>Power cable</span><span>Tray</span><span>Glands</span></div>
+      </article>
+
+      <article class="card reveal" data-delay="2">
+        <span class="card__index">06</span>
+        <svg class="card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="9" y="4" width="14" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M16 13v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M8 19h16v4a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M13 25v3M19 25v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3 class="card__title">Actuators</h3>
+        <p class="card__body">Electric, pneumatic and hydraulic actuation matched to valve torque and duty requirements.</p>
+        <div class="card__list"><span>Electric</span><span>Pneumatic</span><span>Hydraulic</span><span>Accessories</span></div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ CONTACT ═══════ -->
+<section class="band cta-band" id="contact">
+  <div class="shell">
+
+    <div class="section-head reveal">
+      <p class="eyebrow">Contact</p>
+      <h2 class="section-title">Have a tag list? Let's price it.</h2>
+      <p class="section-lede">
+        Send the specification, datasheet or line-item list. We come back with
+        U.S.-sourced options, real factory lead times and landed cost.
+      </p>
+    </div>
+
+    <div class="contact">
+
+      <div class="contact__details reveal">
+
+        <a class="contact-card" href="mailto:sales@vespersupply.com">
+          <svg class="contact-card__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M2.8 5.2 10 11l7.2-5.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="contact-card__label">Email</span>
+          <span class="contact-card__value">sales@vespersupply.com</span>
+        </a>
+
+        <a class="contact-card" href="tel:+18327202191">
+          <svg class="contact-card__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M6.5 2.5 8.4 6 6.8 7.9a10 10 0 0 0 5.3 5.3L14 11.6l3.5 1.9v3a1 1 0 0 1-1.1 1A14.6 14.6 0 0 1 2.5 4.1a1 1 0 0 1 1-1.1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+          <span class="contact-card__label">Phone</span>
+          <span class="contact-card__value">+1 (832) 720-2191</span>
+        </a>
+
+        <a class="contact-card"
+           href="https://maps.google.com/?q=3530+Lang+Rd+Unit+1+Houston+TX+77092"
+           target="_blank" rel="noopener noreferrer">
+          <svg class="contact-card__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 18s6-5.1 6-9.4A6 6 0 0 0 4 8.6C4 12.9 10 18 10 18z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <circle cx="10" cy="8.5" r="2.2" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          <span class="contact-card__label">Office</span>
+          <span class="contact-card__value">
+            3530 Lang Rd, Unit 1<br>
+            Houston, TX 77092
+          </span>
+        </a>
+
+        <div class="contact-card contact-card--static">
+          <svg class="contact-card__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10 5.5V10l3 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="contact-card__label">Hours</span>
+          <span class="contact-card__value">Mon–Fri, 8:00–17:00 CT</span>
+        </div>
+
+      </div>
+
+      <!-- RFQ form ---------------------------------------------------------
+           Works with no backend: on submit, main.js composes a pre-filled
+           email. To use a real form service instead, set a form action and
+           delete the data-mailto attribute. -->
+      <form class="rfq reveal" data-delay="1" id="rfqForm"
+            data-mailto="sales@vespersupply.com" novalidate>
+
+        <h3 class="rfq__title">Request a quote</h3>
+
+        <div class="field">
+          <label class="field__label" for="rfqName">Full name</label>
+          <input class="field__input" id="rfqName" name="name" type="text"
+                 autocomplete="name" required>
+          <p class="field__error" data-error-for="rfqName" hidden>Enter your name.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="rfqCompany">Company</label>
+          <input class="field__input" id="rfqCompany" name="company" type="text"
+                 autocomplete="organization" required>
+          <p class="field__error" data-error-for="rfqCompany" hidden>Enter your company.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="rfqEmail">Work email</label>
+          <input class="field__input" id="rfqEmail" name="email" type="email"
+                 autocomplete="email" required>
+          <p class="field__hint">We reply to this address with pricing and lead times.</p>
+          <p class="field__error" data-error-for="rfqEmail" hidden>Enter a valid email address.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="rfqCategory">Category</label>
+          <select class="field__input" id="rfqCategory" name="category">
+            <option>Instrumentation</option>
+            <option>Automation &amp; Control</option>
+            <option>Electrical Equipment</option>
+            <option>Smart Valves</option>
+            <option>Cable &amp; Wiring</option>
+            <option>Actuators</option>
+            <option>Multiple / not sure</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="rfqDetails">What do you need?</label>
+          <textarea class="field__input field__input--area" id="rfqDetails"
+                    name="details" rows="4" required></textarea>
+          <p class="field__hint">Tag numbers, model numbers, quantities or a short description.</p>
+          <p class="field__error" data-error-for="rfqDetails" hidden>Tell us what you need quoted.</p>
+        </div>
+
+        <button class="btn btn--primary rfq__submit" type="submit">
+          Send request
+          <svg class="btn__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <p class="rfq__status" id="rfqStatus" role="status" aria-live="polite"></p>
+
+      </form>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════ FOOTER ═══════ -->
+<footer class="site-footer">
+  <div class="shell">
+
+    <div class="footer__top">
+
+      <div>
+        <a class="logo" href="#top" aria-label="Vesper Supply — home">
+          <img class="logo__lockup-img" src="MEDIA/logo/vesper-lockup-light.png"
+               alt="Vesper Supply" width="862" height="178">
+        </a>
+        <p class="footer__blurb">
+          Texas-based industrial procurement, bridging American manufacturers and
+          South American energy operations.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="footer__heading">Site</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="#about">About Us</a></li>
+          <li><a class="footer__link" href="#mission">Mission &amp; Vision</a></li>
+          <li><a class="footer__link" href="#solutions">Solutions</a></li>
+          <li><a class="footer__link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer__heading">Contact</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="mailto:sales@vespersupply.com">sales@vespersupply.com</a></li>
+          <li><a class="footer__link" href="tel:+18327202191">+1 (832) 720-2191</a></li>
+          <li><span class="footer__link">3530 Lang Rd, Unit 1<br>Houston, TX 77092</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; <span id="year">2026</span> Vesper Supply Co.</span>
+      <span>Instrumentation · Automation · Flow control</span>
+    </div>
+
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
