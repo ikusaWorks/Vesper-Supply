@@ -1352,3 +1352,59 @@ select.field__input option { color: #111; background: #fff; }
 @media (prefers-reduced-motion: reduce) {
   .is-revealed .ping__wave { animation: none; opacity: 0.5; }
 }
+
+/* ---------------------------------------------------------------------------
+   CUSTOM DOT CURSOR
+   Only on devices with a fine pointer — never on touch, where there is no
+   cursor to replace and hiding it would strand the user.
+   mix-blend-mode: difference means one white dot stays visible against both
+   the charcoal sections and the white ones, with no per-section overrides.
+   ------------------------------------------------------------------------ */
+.cursor { display: none; }
+
+@media (pointer: fine) {
+  /* Only hide the native cursor once JS has confirmed it can draw ours,
+     so a script failure never leaves the page with no cursor at all. */
+  .has-dot-cursor,
+  .has-dot-cursor a,
+  .has-dot-cursor button,
+  .has-dot-cursor summary,
+  .has-dot-cursor [role="button"],
+  .has-dot-cursor .scroller { cursor: none; }
+
+  /* Form fields keep the native I-beam — losing it makes text hard to place. */
+  .has-dot-cursor input,
+  .has-dot-cursor textarea,
+  .has-dot-cursor select { cursor: auto; }
+
+  .has-dot-cursor .cursor {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .cursor__dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    border-radius: var(--radius-pill);
+    background: var(--brand-white);
+    mix-blend-mode: difference;
+    transition: transform 200ms var(--ease), opacity 200ms var(--ease);
+  }
+
+  /* Grows over anything clickable. */
+  .cursor.is-active .cursor__dot { transform: scale(3.4); }
+
+  /* Hidden over form fields and when the pointer leaves the window. */
+  .cursor.is-hidden .cursor__dot { opacity: 0; transform: scale(0.5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor__dot { transition: none; }
+}

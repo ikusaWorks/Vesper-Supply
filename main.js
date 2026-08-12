@@ -332,4 +332,59 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncControls);
   }
 
+  /* ---------------------------------------------------------------------
+     Custom dot cursor
+     Gated on a fine pointer, so touch devices are left alone. The
+     .has-dot-cursor class is what hides the native cursor, and it is only
+     applied here — if this script never runs, the normal cursor survives.
+     ------------------------------------------------------------------ */
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+  var cursorEl = document.getElementById('cursor');
+
+  if (finePointer && cursorEl) {
+    document.documentElement.classList.add('has-dot-cursor');
+
+    var curX = 0, curY = 0, queued = false;
+
+    function drawCursor() {
+      queued = false;
+      cursorEl.style.transform = 'translate3d(' + curX + 'px,' + curY + 'px,0)';
+    }
+
+    // Coalesce to one paint per frame; mousemove fires far more often than that.
+    document.addEventListener('mousemove', function (event) {
+      curX = event.clientX;
+      curY = event.clientY;
+      if (!queued) { queued = true; requestAnimationFrame(drawCursor); }
+    }, { passive: true });
+
+    var INTERACTIVE = 'a, button, summary, [role="button"], .scroller, label';
+    var TEXTFIELD   = 'input, textarea, select';
+
+    document.addEventListener('mouseover', function (event) {
+      var t = event.target;
+      if (t.closest && t.closest(TEXTFIELD)) {
+        cursorEl.classList.add('is-hidden');
+        cursorEl.classList.remove('is-active');
+        return;
+      }
+      cursorEl.classList.remove('is-hidden');
+      cursorEl.classList.toggle('is-active', !!(t.closest && t.closest(INTERACTIVE)));
+    }, { passive: true });
+
+    // Leaving the window entirely, rather than crossing between elements.
+    document.addEventListener('mouseout', function (event) {
+      if (!event.relatedTarget) cursorEl.classList.add('is-hidden');
+    }, { passive: true });
+
+    document.addEventListener('mouseenter', function () {
+      cursorEl.classList.remove('is-hidden');
+    }, { passive: true });
+
+    // A pen or finger on a hybrid device should hand the native cursor back.
+    window.addEventListener('touchstart', function () {
+      document.documentElement.classList.remove('has-dot-cursor');
+    }, { passive: true, once: true });
+  }
+
 })();
