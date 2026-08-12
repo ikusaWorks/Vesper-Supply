@@ -124,16 +124,11 @@
     </div>
 
     <!-- ─── SIGNATURE ELEMENT ──────────────────────────────────────────
-             Orthographic globe centred on 16°N 78°W, so the Gulf coast and the
-             northern coast of South America are both in view. Coastlines are
-             real Natural Earth 1:50m data, projected and simplified at build
-             time — no mapping library at runtime. ─────────────────────────── -->
+             Orthographic globe centred on 16°N 78°W. Coastlines are real
+             Natural Earth 1:50m data, projected and simplified at build time
+             — no mapping library at runtime. Two pinging markers, no frame,
+             no labels. ─────────────────────────────────────────────────── -->
     <div class="globe reveal" data-delay="2" id="corridorDiagram">
-      <div class="globe__caption">
-        <span>Supply corridor</span>
-        <span>Houston → Venezuela</span>
-      </div>
-
       <svg class="globe__svg" viewBox="0 0 520 520" role="img"
            aria-label="Globe centred on the Gulf of Mexico and Caribbean, showing the supply route from Houston, Texas to the northern coast of Venezuela.">
         <defs>
@@ -165,28 +160,20 @@
         <circle cx="260" cy="260" r="236" fill="url(#globeLimb)" pointer-events="none"/>
         <circle class="globe__rim" cx="260" cy="260" r="236"/>
 
-        <path id="routePath" class="globe__route" pathLength="100" d="M198.8 201.3 L201.0 202.9 L203.1 204.4 L205.2 206.0 L207.4 207.6 L209.5 209.2 L211.7 210.8 L213.8 212.4 L216.0 214.0 L218.2 215.6 L220.4 217.3 L222.5 218.9 L224.7 220.5 L226.9 222.2 L229.1 223.8 L231.4 225.5 L233.6 227.1 L235.8 228.8 L238.0 230.5 L240.2 232.1 L242.4 233.8 L244.7 235.5 L246.9 237.2 L249.1 238.9 L251.4 240.6 L253.6 242.3 L255.8 244.0 L258.1 245.7 L260.3 247.4 L262.5 249.1 L264.8 250.8 L267.0 252.5 L269.2 254.2 L271.5 255.9 L273.7 257.6 L275.9 259.3 L278.2 261.0 L280.4 262.7 L282.6 264.4 L284.8 266.1 L287.0 267.8 L289.3 269.5 L291.5 271.2 L293.7 272.9 L295.9 274.6 L298.1 276.3 L300.2 278.0 L302.4 279.7 L304.6 281.4"/>
-        <circle class="globe__pulse" r="4.5">
-          <animateMotion dur="4.6s" repeatCount="indefinite" begin="1s" path="M198.8 201.3 L201.0 202.9 L203.1 204.4 L205.2 206.0 L207.4 207.6 L209.5 209.2 L211.7 210.8 L213.8 212.4 L216.0 214.0 L218.2 215.6 L220.4 217.3 L222.5 218.9 L224.7 220.5 L226.9 222.2 L229.1 223.8 L231.4 225.5 L233.6 227.1 L235.8 228.8 L238.0 230.5 L240.2 232.1 L242.4 233.8 L244.7 235.5 L246.9 237.2 L249.1 238.9 L251.4 240.6 L253.6 242.3 L255.8 244.0 L258.1 245.7 L260.3 247.4 L262.5 249.1 L264.8 250.8 L267.0 252.5 L269.2 254.2 L271.5 255.9 L273.7 257.6 L275.9 259.3 L278.2 261.0 L280.4 262.7 L282.6 264.4 L284.8 266.1 L287.0 267.8 L289.3 269.5 L291.5 271.2 L293.7 272.9 L295.9 274.6 L298.1 276.3 L300.2 278.0 L302.4 279.7 L304.6 281.4"/>
-        </circle>
-
-        <g class="globe__node">
-          <circle class="globe__node-halo" cx="198.8" cy="201.3" r="13"/>
-          <circle class="globe__node-ring" cx="198.8" cy="201.3" r="7"/>
-          <circle class="globe__node-core" cx="198.8" cy="201.3" r="3"/>
-          <text class="globe__label" x="184.8" y="183.3" text-anchor="end">Houston</text>
-          <text class="globe__label globe__label--sub" x="184.8" y="195.3" text-anchor="end">29.76° N / 95.36° W</text>
+        <g class="ping">
+          <circle class="ping__wave" cx="198.8" cy="201.3" r="7"/>
+          <circle class="ping__wave ping__wave--b" cx="198.8" cy="201.3" r="7"/>
+          <circle class="ping__core" cx="198.8" cy="201.3" r="4"/>
         </g>
 
-        <g class="globe__node">
-          <circle class="globe__node-halo" cx="304.6" cy="281.4" r="13"/>
-          <circle class="globe__node-ring" cx="304.6" cy="281.4" r="7"/>
-          <circle class="globe__node-core" cx="304.6" cy="281.4" r="3"/>
-          <text class="globe__label" x="320.6" y="287.4">Venezuela</text>
-          <text class="globe__label globe__label--sub" x="320.6" y="299.4">10.50° N / 66.92° W</text>
+        <g class="ping">
+          <circle class="ping__wave" cx="304.6" cy="281.4" r="7"/>
+          <circle class="ping__wave ping__wave--b" cx="304.6" cy="281.4" r="7"/>
+          <circle class="ping__core" cx="304.6" cy="281.4" r="4"/>
         </g>
       </svg>
     </div>
+
   </div>
 </section>
 
@@ -239,6 +226,11 @@
           </div>
         </div>
 
+      </div>
+
+      <div class="about__art reveal" data-delay="1" aria-hidden="true">
+        <img class="valve" src="MEDIA/valve-technical.svg" alt=""
+             width="775" height="490" loading="lazy">
       </div>
 
     </div>
