@@ -160,7 +160,6 @@ h1, h2, h3, h4 {
 }
 
 /* Small headings need proportionally more tracking than large ones. */
-.card__title,
 .rfq__title { letter-spacing: 0.045em; }
 
 p { margin: 0; text-wrap: pretty; }
@@ -621,84 +620,57 @@ button { font: inherit; color: inherit; }
 }
 
 /* ---------------------------------------------------------------------------
-   CATEGORY GRID
+   EQUIPMENT LIST
+   Names only — no invented descriptions. Same panel treatment as the rest of
+   the cards so the section still reads as part of the family.
    ------------------------------------------------------------------------ */
-.grid-cards {
+.kit {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-@media (min-width: 640px) { .grid-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1024px) { .grid-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-
-.card {
-  position: relative;
-  overflow: hidden;
-  padding: var(--space-6);
+.kit__item {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: var(--space-4);
-  min-height: 240px;
+  min-height: 64px;
+  padding: var(--space-4) var(--space-5);
   border: 1px solid var(--card-line);
   border-radius: var(--radius-lg);
   background: var(--panel-wash-light);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  color: var(--text-strong);
   transition: background-color var(--dur) var(--ease),
               border-color var(--dur) var(--ease),
               color var(--dur) var(--ease);
 }
 
-/* Copy sits above the outlined numeral behind it. */
-.card__icon, .card__title, .card__body, .card__list { position: relative; }
-
-/* Hover fills the card with the steel blue and flips the type to white.
-   Nothing is hidden behind hover — this is colour only, so touch users
-   lose no information. */
-.card:hover { background: var(--card-hover); border-color: var(--card-hover); }
-.card:hover .card__title,
-.card:hover .card__icon { color: var(--brand-white); }
-.card:hover .card__body { color: rgba(255, 255, 255, 0.88); }
-.card:hover .card__list {
-  color: rgba(255, 255, 255, 0.82);
-  border-top-color: rgba(255, 255, 255, 0.26);
+/* Small square marker, echoing the technical labelling elsewhere. */
+.kit__item::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 1px;
+  background: var(--accent-on-light);
+  transition: background-color var(--dur) var(--ease);
 }
 
-.card__index {
-  position: absolute;
-  top: -14px;
-  right: 4px;
-  font-family: var(--font-display);
-  font-size: 5.5rem;
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(66, 103, 122, 0.26);
-  pointer-events: none;
-  transition: -webkit-text-stroke-color var(--dur) var(--ease);
+.kit__item:hover {
+  background: var(--card-hover);
+  border-color: var(--card-hover);
+  color: var(--brand-white);
 }
 
-.card:hover .card__index { -webkit-text-stroke-color: rgba(255, 255, 255, 0.45); }
-
-.card__icon { width: 32px; height: 32px; color: var(--accent-on-light); }
-
-.card__title {
-  font-size: 0.9375rem;
-  font-weight: 400;
-}
-
-.card__body { font-size: 0.9375rem; color: var(--text-muted); }
-
-.card__list {
-  margin-top: auto;
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--card-line);
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-3);
-}
+.kit__item:hover::before { background: var(--brand-white); }
 
 /* ---------------------------------------------------------------------------
    SPLIT / DIFFERENTIATOR
@@ -882,38 +854,6 @@ button { font: inherit; color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-}
-
-/* ---------------------------------------------------------------------------
-   ABOUT — fact row
-   ------------------------------------------------------------------------ */
-.fact-row {
-  margin-top: var(--space-7);
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--line);
-  display: grid;
-  gap: var(--space-5);
-}
-
-@media (min-width: 640px) {
-  .fact-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-.fact__label {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.6875rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-on-light);
-}
-
-.fact__value {
-  margin-top: var(--space-2);
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-strong);
 }
 
 /* ---------------------------------------------------------------------------
