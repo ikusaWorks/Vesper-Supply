@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "vesper-preview-mirror", "runtimeExecutable": "python3",
+      "runtimeArgs": ["/private/tmp/claude-501/-Users-miguelrivero-Desktop-VESPER-SUPPLY/b0cc1203-a256-491f-b6cc-d376e65d7a0a/scratchpad/preview/serve.py"], "port": 4174 }
+  ]
+}
