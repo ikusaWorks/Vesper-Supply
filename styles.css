@@ -538,9 +538,9 @@ button { font: inherit; color: inherit; }
   inset: -4%;
   z-index: -2;
   background: url("MEDIA/hero-plant-night.jpg") center / cover no-repeat;
-  filter: blur(7px) saturate(0.55);
-  transform: scale(1.06);
-  opacity: 0.42;
+  filter: blur(3.5px) saturate(0.72);
+  transform: scale(1.05);
+  opacity: 0.58;
 }
 
 .hero__bg {
@@ -550,21 +550,16 @@ button { font: inherit; color: inherit; }
   background:
     radial-gradient(120% 90% at 78% 8%, rgba(117, 183, 217, 0.16) 0%, transparent 55%),
     radial-gradient(90% 70% at 12% 100%, rgba(66, 103, 122, 0.34) 0%, transparent 60%),
-    /* the blue wash that neutralises the amber lighting in the photograph */
-    linear-gradient(180deg, rgba(37, 42, 46, 0.82) 0%, rgba(34, 56, 74, 0.80) 55%, rgba(19, 28, 37, 0.90) 100%);
+    /* Directional wash rather than an even one: heavy on the left so the
+       headline sits on near-solid charcoal, lifting across to the right where
+       only the globe is, which is where the refinery actually reads. */
+    linear-gradient(100deg,
+      rgba(37, 42, 46, 0.90) 0%,
+      rgba(37, 42, 46, 0.84) 34%,
+      rgba(34, 56, 74, 0.66) 66%,
+      rgba(24, 38, 52, 0.72) 100%);
 }
 
-.hero__grid {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image:
-    linear-gradient(to right, rgba(125, 139, 148, 0.10) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(125, 139, 148, 0.10) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(85% 75% at 50% 40%, #000 30%, transparent 100%);
-  -webkit-mask-image: radial-gradient(85% 75% at 50% 40%, #000 30%, transparent 100%);
-}
 
 .hero__inner {
   display: grid;
@@ -1471,4 +1466,33 @@ select.field__input option { color: #111; background: #fff; }
 .statement-block__body {
   font-size: 1.0625rem;
   color: var(--text-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   WATERMARK — the V isotype traced as an outline.
+   Placed in the sparsest section on the page, bled off the right edge so it
+   reads as a graphic device rather than a logo dropped into the layout.
+   ------------------------------------------------------------------------ */
+#integrity { position: relative; overflow: hidden; isolation: isolate; }
+
+.watermark {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: -6%;
+  width: auto;
+  height: 150%;
+  transform: translateY(-50%);
+  fill: none;
+  stroke: var(--brand-steel);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  opacity: 0.16;
+  pointer-events: none;
+  /* The stroke scales with the SVG, so keep it hairline at any size. */
+  vector-effect: non-scaling-stroke;
+}
+
+@media (max-width: 899px) {
+  .watermark { height: 118%; right: -22%; opacity: 0.12; }
 }
