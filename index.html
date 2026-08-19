@@ -456,15 +456,6 @@
 
 <!-- ═════════════════════════════════════════════════════ INTEGRITY ═══════ -->
 <section class="band" id="integrity">
-  <!-- The V isotype, traced as an outline and bled off the right edge. Sits
-       behind the copy at low opacity; the section clips it. -->
-  <svg class="watermark" viewBox="0 0 340 235" fill="none" aria-hidden="true"
-       preserveAspectRatio="xMaxYMid slice">
-    <path class="watermark__arm" d="M0 0 L68 0 L139 119 L102 166 Z"/>
-    <path class="watermark__arm" d="M340 0 L272 0 L201 119 L238 166 Z"/>
-    <path class="watermark__bowl" d="M102 166 L238 166 L201 235 L140 235 Z"/>
-  </svg>
-
   <div class="shell">
     <div class="statement-block reveal">
       <p class="eyebrow">Integrity &amp; compliance</p>
@@ -480,6 +471,10 @@
 
 <!-- ══════════════════════════════════════════════════════ CONTACT ═══════ -->
 <section class="band cta-band" id="contact">
+  <!-- Same treatment as the hero: blurred photograph under a wash, so the
+       form and the contact details stay the thing you read. -->
+  <div class="contact__photo" aria-hidden="true"></div>
+
   <div class="shell">
 
     <div class="section-head reveal">
@@ -614,6 +609,16 @@
 
 <!-- ═══════════════════════════════════════════════════════ FOOTER ═══════ -->
 <footer class="site-footer">
+  <!-- The isotype as a tonal shift rather than an outline: filled, very low
+       opacity, bled off the corner. You sense the shape rather than read a
+       line drawing of the logo. -->
+  <svg class="footer-mark" viewBox="0 0 340 235" aria-hidden="true"
+       preserveAspectRatio="xMidYMax slice">
+    <path d="M0 0 L68 0 L139 119 L102 166 Z"/>
+    <path d="M340 0 L272 0 L201 119 L238 166 Z"/>
+    <path class="footer-mark__bowl" d="M102 166 L238 166 L201 235 L140 235 Z"/>
+  </svg>
+
   <div class="shell">
 
     <div class="footer__top">

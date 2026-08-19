@@ -1476,32 +1476,49 @@ select.field__input option { color: #111; background: #fff; }
 }
 
 /* ---------------------------------------------------------------------------
-   WATERMARK — the V isotype traced as an outline.
-   Placed in the sparsest section on the page, bled off the right edge so it
-   reads as a graphic device rather than a logo dropped into the layout.
+   CONTACT BACKDROP — same approach as the hero
    ------------------------------------------------------------------------ */
-#integrity { position: relative; overflow: hidden; isolation: isolate; }
-
-.watermark {
+.contact__photo {
   position: absolute;
-  z-index: -1;
-  top: 50%;
-  right: -6%;
-  width: auto;
-  height: 150%;
-  transform: translateY(-50%);
-  fill: none;
-  stroke-width: 1.6;
-  stroke-linejoin: round;
-  opacity: 0.22;
+  inset: -4%;
+  z-index: -2;
+  background: url("MEDIA/contact-port-sunset.jpg") center / cover no-repeat;
+  /* The photograph is a warm sunset; desaturating hard is what lets the
+     charcoal wash sit over it without going muddy. The silhouettes survive
+     because they are almost black to begin with. */
+  filter: blur(3px) saturate(0.28) brightness(0.9);
+  transform: scale(1.05);
+  opacity: 0.55;
   pointer-events: none;
-  /* The stroke scales with the SVG, so keep it hairline at any size. */
-  vector-effect: non-scaling-stroke;
 }
 
-.watermark__arm  { stroke: var(--brand-ink); }
-.watermark__bowl { stroke: var(--brand-steel); }
+/* The existing ::before on .cta-band supplies the wash; deepen it so the
+   form panel and contact cards stay clearly readable on top. */
+.cta-band::before {
+  background:
+    radial-gradient(70% 120% at 85% 40%, rgba(117, 183, 217, 0.14) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(37, 42, 46, 0.86) 0%, rgba(28, 44, 58, 0.80) 50%, rgba(19, 28, 37, 0.90) 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   FOOTER MARK — the isotype as a solid, very low-contrast ghost
+   ------------------------------------------------------------------------ */
+.site-footer { position: relative; overflow: hidden; isolation: isolate; }
+
+.footer-mark {
+  position: absolute;
+  z-index: -1;
+  right: -4%;
+  bottom: -32%;
+  height: 190%;
+  width: auto;
+  fill: var(--brand-white);
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+.footer-mark__bowl { fill: var(--brand-sky); opacity: 0.9; }
 
 @media (max-width: 899px) {
-  .watermark { height: 118%; right: -22%; opacity: 0.16; }
+  .footer-mark { height: 130%; right: -26%; bottom: -12%; opacity: 0.045; }
 }
