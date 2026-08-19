@@ -1499,26 +1499,3 @@ select.field__input option { color: #111; background: #fff; }
     radial-gradient(70% 120% at 85% 40%, rgba(117, 183, 217, 0.14) 0%, transparent 60%),
     linear-gradient(180deg, rgba(37, 42, 46, 0.86) 0%, rgba(28, 44, 58, 0.80) 50%, rgba(19, 28, 37, 0.90) 100%);
 }
-
-/* ---------------------------------------------------------------------------
-   FOOTER MARK — the isotype as a solid, very low-contrast ghost
-   ------------------------------------------------------------------------ */
-.site-footer { position: relative; overflow: hidden; isolation: isolate; }
-
-.footer-mark {
-  position: absolute;
-  z-index: -1;
-  right: -4%;
-  bottom: -32%;
-  height: 190%;
-  width: auto;
-  fill: var(--brand-white);
-  opacity: 0.035;
-  pointer-events: none;
-}
-
-.footer-mark__bowl { fill: var(--brand-sky); opacity: 0.9; }
-
-@media (max-width: 899px) {
-  .footer-mark { height: 130%; right: -26%; bottom: -12%; opacity: 0.045; }
-}
