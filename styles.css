@@ -528,16 +528,30 @@ button { font: inherit; color: inherit; }
   .hero { padding-block: calc(76px + var(--space-10)) var(--space-10); }
 }
 
-/* Layered background: radial warmth + engineering grid. No photography
-   required, which keeps the hero honest until real imagery is supplied. */
+/* Photographic base, blurred and pushed back under a steel-blue wash, so it
+   reads as atmosphere and the globe stays the thing you look at.
+   The blur is on its own layer: blurring the element that also carries the
+   gradients would soften those too, and blur bleeds transparent pixels in
+   from the edges, hence the inset and scale. */
+.hero__photo {
+  position: absolute;
+  inset: -4%;
+  z-index: -2;
+  background: url("MEDIA/hero-plant-night.jpg") center / cover no-repeat;
+  filter: blur(7px) saturate(0.55);
+  transform: scale(1.06);
+  opacity: 0.42;
+}
+
 .hero__bg {
   position: absolute;
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(120% 90% at 78% 8%, rgba(117, 183, 217, 0.14) 0%, transparent 55%),
+    radial-gradient(120% 90% at 78% 8%, rgba(117, 183, 217, 0.16) 0%, transparent 55%),
     radial-gradient(90% 70% at 12% 100%, rgba(66, 103, 122, 0.34) 0%, transparent 60%),
-    var(--brand-ink);
+    /* the blue wash that neutralises the amber lighting in the photograph */
+    linear-gradient(180deg, rgba(37, 42, 46, 0.82) 0%, rgba(34, 56, 74, 0.80) 55%, rgba(19, 28, 37, 0.90) 100%);
 }
 
 .hero__grid {
