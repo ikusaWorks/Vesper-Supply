@@ -538,9 +538,9 @@ button { font: inherit; color: inherit; }
   inset: -4%;
   z-index: -2;
   background: url("MEDIA/hero-plant-night.jpg") center / cover no-repeat;
-  filter: blur(3.5px) saturate(0.72);
-  transform: scale(1.05);
-  opacity: 0.58;
+  filter: blur(2.5px) saturate(0.82);
+  transform: scale(1.04);
+  opacity: 0.70;
 }
 
 .hero__bg {
@@ -554,10 +554,10 @@ button { font: inherit; color: inherit; }
        headline sits on near-solid charcoal, lifting across to the right where
        only the globe is, which is where the refinery actually reads. */
     linear-gradient(100deg,
-      rgba(37, 42, 46, 0.90) 0%,
-      rgba(37, 42, 46, 0.84) 34%,
-      rgba(34, 56, 74, 0.66) 66%,
-      rgba(24, 38, 52, 0.72) 100%);
+      rgba(37, 42, 46, 0.88) 0%,
+      rgba(37, 42, 46, 0.78) 34%,
+      rgba(34, 56, 74, 0.50) 66%,
+      rgba(24, 38, 52, 0.56) 100%);
 }
 
 
@@ -641,7 +641,7 @@ button { font: inherit; color: inherit; }
 .kit {
   display: grid;
   gap: var(--space-4);
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(262px, 1fr));
   margin: 0;
   padding: 0;
   list-style: none;
@@ -652,7 +652,9 @@ button { font: inherit; color: inherit; }
   align-items: center;
   gap: var(--space-4);
   min-height: 76px;
-  padding: var(--space-4) var(--space-5);
+  /* Tighter side padding: the longest single word only just fits otherwise,
+     and it is unbreakable, so a few pixels decide whether it wraps badly. */
+  padding: var(--space-4);
   border: 1px solid var(--card-line);
   border-radius: var(--radius-lg);
   background: var(--panel-wash-light);
@@ -661,7 +663,12 @@ button { font: inherit; color: inherit; }
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
+  /* "Instrumentation" is one long unbreakable word in a very wide face.
+     min-width lets the flex child shrink instead of pushing out of the tile;
+     overflow-wrap is a last resort for viewports narrower than we target. */
+  min-width: 0;
+  overflow-wrap: anywhere;
   color: var(--text-strong);
   transition: background-color var(--dur) var(--ease),
               border-color var(--dur) var(--ease),
@@ -1484,15 +1491,17 @@ select.field__input option { color: #111; background: #fff; }
   height: 150%;
   transform: translateY(-50%);
   fill: none;
-  stroke: var(--brand-steel);
   stroke-width: 1.6;
   stroke-linejoin: round;
-  opacity: 0.16;
+  opacity: 0.22;
   pointer-events: none;
   /* The stroke scales with the SVG, so keep it hairline at any size. */
   vector-effect: non-scaling-stroke;
 }
 
+.watermark__arm  { stroke: var(--brand-ink); }
+.watermark__bowl { stroke: var(--brand-steel); }
+
 @media (max-width: 899px) {
-  .watermark { height: 118%; right: -22%; opacity: 0.12; }
+  .watermark { height: 118%; right: -22%; opacity: 0.16; }
 }
