@@ -219,6 +219,7 @@ button { font: inherit; color: inherit; }
   .band { padding-block: var(--space-10); }
 }
 
+.band--sunken  { background: var(--surface-sunken); }
 .band--inverse { background: var(--surface-inverse); color: var(--text-on-dark-mut); }
 .band--inverse h2,
 .band--inverse h3,
@@ -1150,30 +1151,26 @@ select.field__input option { color: #111; background: #fff; }
 
 .ind-card__title { font-size: 0.9375rem; letter-spacing: 0.045em; }
 
-.ind-card__body { font-size: 0.9375rem; color: var(--text-muted); transition: color var(--dur) var(--ease); }
-
-.ind-card__tags {
+.ind-card__body {
   margin-top: auto;
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--card-line);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-3);
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  transition: color var(--dur) var(--ease);
+}
+
+.ind-card__num {
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.6875rem;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  letter-spacing: 0.16em;
+  color: var(--accent-on-light);
+  transition: color var(--dur) var(--ease);
 }
 
 .ind-card:hover .ind-card__icon,
+.ind-card:hover .ind-card__num,
 .ind-card:hover .ind-card__title { color: var(--brand-white); }
 .ind-card:hover .ind-card__body { color: rgba(255, 255, 255, 0.88); }
-.ind-card:hover .ind-card__tags {
-  color: rgba(255, 255, 255, 0.82);
-  border-top-color: rgba(255, 255, 255, 0.26);
-}
 
 @media (prefers-reduced-motion: reduce) {
   .ind-card { transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease); }
@@ -1353,4 +1350,15 @@ select.field__input option { color: #111; background: #fff; }
 
 @media (prefers-reduced-motion: reduce) {
   .cursor__dot { transition: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   STATEMENT BLOCK — a short standalone passage with no heading above it,
+   used for the integrity & compliance note.
+   ------------------------------------------------------------------------ */
+.statement-block { max-width: 68ch; }
+
+.statement-block__body {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
 }
