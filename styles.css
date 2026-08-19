@@ -38,9 +38,11 @@
      Display / headlines.
      Avenir carries everything that is not a heading, including the small
      letterspaced labels that used to be set in a mono face. */
-  /* Display — Space Grotesk, freely licensed (SIL OFL) and served to every
-     visitor, so there is no local-install or webfont-licence problem. */
-  --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  /* Display — Archivo Expanded Bold. SIL Open Font Licensed, fsType 0, so it
+     is free to serve. "Archivo Expanded" picks up a local install; "Archivo"
+     is the variable font from Google, which needs the font-stretch below to
+     resolve to the same expanded cut. */
+  --font-display: "Archivo Expanded", "Archivo", "Helvetica Neue", Arial, sans-serif;
   /* Body — Avenir ships with macOS/iOS, so Apple visitors get the real face.
      Mulish is the loaded fallback for everyone else. */
   --font-body:    "Avenir Next", "Avenir", "Mulish",
@@ -150,6 +152,7 @@ img { height: auto; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
+  font-stretch: 125%;          /* selects the expanded cut of the variable font */
   color: var(--text-strong);
   font-weight: 700;
   text-transform: uppercase;
@@ -252,7 +255,7 @@ button { font: inherit; color: inherit; }
 .band--inverse .eyebrow { color: var(--accent); }
 
 .section-title {
-  font-size: clamp(1.375rem, 1rem + 1.9vw, 2.25rem);
+  font-size: clamp(1.125rem, 0.9rem + 1.4vw, 1.75rem);
   max-width: 22ch;
 }
 
@@ -566,7 +569,7 @@ button { font: inherit; color: inherit; }
 
 .hero__title {
   color: var(--text-on-dark);
-  font-size: clamp(1.75rem, 1.05rem + 3.1vw, 3.25rem);
+  font-size: clamp(1.375rem, 0.85rem + 2.35vw, 2.5rem);
   font-weight: 700;
   letter-spacing: 0;        /* large caps need less tracking than small ones */
   max-width: 15ch;
@@ -604,7 +607,8 @@ button { font: inherit; color: inherit; }
 
 .spec__value {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-stretch: 125%;
+  font-size: 0.9375rem;
   font-weight: 700;
   color: var(--text-on-dark);
   letter-spacing: 0.02em;
@@ -644,10 +648,11 @@ button { font: inherit; color: inherit; }
   border-radius: var(--radius-lg);
   background: var(--panel-wash-light);
   font-family: var(--font-display);
-  font-size: 0.9375rem;
+  font-stretch: 125%;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.045em;
+  letter-spacing: 0.03em;
   color: var(--text-strong);
   transition: background-color var(--dur) var(--ease),
               border-color var(--dur) var(--ease),
@@ -941,7 +946,7 @@ a.contact-card:hover { border-color: rgba(117, 183, 217, 0.42); }
 
 @media (min-width: 640px) { .rfq { padding: var(--space-7); } }
 
-.rfq__title { font-size: 1.0625rem; }
+.rfq__title { font-size: 0.9375rem; }
 
 .field { display: grid; gap: var(--space-2); }
 
@@ -1007,7 +1012,7 @@ select.field__input option { color: #111; background: #fff; }
 .block { margin-top: var(--space-9); }
 
 .block__title {
-  font-size: clamp(1.0625rem, 0.95rem + 0.6vw, 1.25rem);
+  font-size: clamp(0.9375rem, 0.88rem + 0.4vw, 1.0625rem);
   margin-bottom: var(--space-7);
   padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--line);
@@ -1020,8 +1025,9 @@ select.field__input option { color: #111; background: #fff; }
    ------------------------------------------------------------------------ */
 .manifesto {
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
-  line-height: 1.3;
+  font-stretch: 125%;
+  font-size: clamp(1rem, 0.9rem + 0.75vw, 1.3125rem);
+  line-height: 1.35;
   letter-spacing: 0;
   font-weight: 600;
   color: var(--text-strong);
@@ -1149,7 +1155,7 @@ select.field__input option { color: #111; background: #fff; }
   transition: color var(--dur) var(--ease);
 }
 
-.ind-card__title { font-size: 0.9375rem; letter-spacing: 0.045em; }
+.ind-card__title { font-size: 0.875rem; letter-spacing: 0.045em; }
 
 .ind-card__body {
   margin-top: auto;
@@ -1217,7 +1223,8 @@ select.field__input option { color: #111; background: #fff; }
   top: -14px;
   right: 4px;
   font-family: var(--font-display);
-  font-size: 5.5rem;
+  font-stretch: 125%;
+  font-size: 4.75rem;
   line-height: 1;
   color: transparent;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
@@ -1237,7 +1244,7 @@ select.field__input option { color: #111; background: #fff; }
   color: var(--accent);
 }
 
-.practice__title { position: relative; font-size: 0.9375rem; letter-spacing: 0.045em; }
+.practice__title { position: relative; font-size: 0.875rem; letter-spacing: 0.045em; }
 
 .practice__text { position: relative; font-size: 0.9375rem; color: var(--text-on-dark-mut); }
 
