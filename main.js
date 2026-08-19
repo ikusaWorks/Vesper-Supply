@@ -400,4 +400,56 @@
     }, { passive: true, once: true });
   }
 
+  /* ---------------------------------------------------------------------
+     About image slider
+     Crossfade between stacked slides. Advances on its own, but pauses on
+     hover and on keyboard focus so it never moves under someone reading
+     or tabbing, and does not auto-advance at all under reduced motion.
+     ------------------------------------------------------------------ */
+  var slider = document.getElementById('aboutSlider');
+
+  if (slider) {
+    var slides = [].slice.call(slider.querySelectorAll('.slider__slide'));
+    var dots   = [].slice.call(slider.querySelectorAll('.slider__dot'));
+    var current = 0;
+    var timer = null;
+    var INTERVAL = 5500;
+
+    function show(next) {
+      current = (next + slides.length) % slides.length;
+      slides.forEach(function (el, i) { el.classList.toggle('is-current', i === current); });
+      dots.forEach(function (el, i) {
+        el.classList.toggle('is-current', i === current);
+        el.setAttribute('aria-current', i === current ? 'true' : 'false');
+      });
+    }
+
+    function start() {
+      if (reduceMotion || timer) return;
+      timer = setInterval(function () { show(current + 1); }, INTERVAL);
+    }
+
+    function stop() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { show(i); stop(); start(); });
+    });
+
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+    slider.addEventListener('focusin', stop);
+    slider.addEventListener('focusout', start);
+
+    // Nothing to animate while the section is off screen.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+      }, { threshold: 0.2 }).observe(slider);
+    } else {
+      start();
+    }
+  }
+
 })();
