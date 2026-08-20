@@ -1499,3 +1499,16 @@ select.field__input option { color: #111; background: #fff; }
     radial-gradient(70% 120% at 85% 40%, rgba(117, 183, 217, 0.14) 0%, transparent 60%),
     linear-gradient(180deg, rgba(37, 42, 46, 0.86) 0%, rgba(28, 44, 58, 0.80) 50%, rgba(19, 28, 37, 0.90) 100%);
 }
+
+/* Honeypot. Positioned off-screen rather than display:none — some bots skip
+   hidden inputs, and this one only works if they fill it in. */
+.rfq__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.rfq__status--error { color: #FF9C92; }
+.rfq__status--ok { color: var(--accent); }

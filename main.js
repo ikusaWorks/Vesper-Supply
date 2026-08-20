@@ -192,12 +192,14 @@
 
   /* ---------------------------------------------------------------------
      RFQ form
-     No backend required: on a valid submit we compose a pre-filled email.
-     To post to a real form service instead, give the <form> an action and
-     remove its data-mailto attribute.
+     Posts JSON to the Cloudflare Pages Function. If that endpoint is not
+     reachable — previewing from the local python server, or before the
+     project is deployed — it falls back to composing an email, so the form
+     is never a dead end.
      ------------------------------------------------------------------ */
   var form = document.getElementById('rfqForm');
   var status = document.getElementById('rfqStatus');
+  var submitBtn = form && form.querySelector('[type="submit"]');
 
   function fieldError(input) {
     return document.querySelector('[data-error-for="' + input.id + '"]');
@@ -211,12 +213,18 @@
     return valid;
   }
 
-  if (form && form.hasAttribute('data-mailto')) {
+  function setStatus(message, kind) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.remove('rfq__status--error', 'rfq__status--ok');
+    if (kind) status.classList.add('rfq__status--' + kind);
+  }
+
+  if (form) {
     var required = Array.prototype.slice.call(
       form.querySelectorAll('input[required], textarea[required]')
     );
 
-    // Validate on blur, then live-correct once the field has been touched.
     required.forEach(function (input) {
       input.addEventListener('blur', function () { validateField(input); });
       input.addEventListener('input', function () {
@@ -224,12 +232,35 @@
       });
     });
 
+    function readForm() {
+      var out = {};
+      ['name', 'company', 'email', 'category', 'details', 'website'].forEach(function (key) {
+        var el = form.elements[key];
+        out[key] = el ? el.value.trim() : '';
+      });
+      return out;
+    }
+
+    function mailtoFallback(payload) {
+      var body = [
+        'Name:     ' + payload.name,
+        'Company:  ' + payload.company,
+        'Email:    ' + payload.email,
+        'Category: ' + payload.category,
+        '',
+        'Requirement:',
+        payload.details
+      ].join('\n');
+      window.location.href = 'mailto:' + form.getAttribute('data-mailto') +
+        '?subject=' + encodeURIComponent('RFQ — ' + payload.company + ' — ' + payload.category) +
+        '&body=' + encodeURIComponent(body);
+      setStatus('Opening your email client with the request ready to send.', 'ok');
+    }
+
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
-      var allValid = true;
-      var firstInvalid = null;
-
+      var allValid = true, firstInvalid = null;
       required.forEach(function (input) {
         if (!validateField(input)) {
           allValid = false;
@@ -238,98 +269,42 @@
       });
 
       if (!allValid) {
-        if (status) status.textContent = 'Check the highlighted fields above.';
+        setStatus('Check the highlighted fields above.', 'error');
         if (firstInvalid) firstInvalid.focus();
         return;
       }
 
-      var get = function (name) {
-        var el = form.elements[name];
-        return el ? el.value.trim() : '';
-      };
+      var payload = readForm();
 
-      var subject = 'RFQ — ' + get('company') + ' — ' + get('category');
-      var body = [
-        'Name:     ' + get('name'),
-        'Company:  ' + get('company'),
-        'Email:    ' + get('email'),
-        'Category: ' + get('category'),
-        '',
-        'Requirement:',
-        get('details')
-      ].join('\n');
+      submitBtn.disabled = true;
+      setStatus('Sending…');
 
-      var href = 'mailto:' + form.getAttribute('data-mailto') +
-                 '?subject=' + encodeURIComponent(subject) +
-                 '&body=' + encodeURIComponent(body);
-
-      window.location.href = href;
-
-      if (status) status.textContent = 'Opening your email client with the request ready to send.';
+      fetch(form.getAttribute('action'), {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (body) {
+            return { ok: res.ok && body.ok, body: body };
+          });
+        })
+        .then(function (result) {
+          if (result.ok) {
+            form.reset();
+            setStatus('Thank you — we have your request and will reply shortly.', 'ok');
+          } else if (result.body && result.body.error) {
+            setStatus(result.body.error, 'error');
+          } else {
+            mailtoFallback(payload);
+          }
+        })
+        .catch(function () {
+          // Endpoint unreachable: local preview, or not deployed yet.
+          mailtoFallback(payload);
+        })
+        .then(function () { submitBtn.disabled = false; });
     });
-  }
-
-  /* ---------------------------------------------------------------------
-     Horizontal card scroller
-     Scrolling itself is native. This adds the arrow buttons, keyboard
-     support, and hides the controls when everything already fits.
-     ------------------------------------------------------------------ */
-  var scroller = document.getElementById('industryScroller');
-  var scrollerNav = document.getElementById('industryNav');
-
-  if (scroller && scrollerNav) {
-    var prevBtn = scrollerNav.querySelector('[data-scroll="prev"]');
-    var nextBtn = scrollerNav.querySelector('[data-scroll="next"]');
-
-    function stepSize() {
-      var card = scroller.querySelector('.ind-card');
-      if (!card) return scroller.clientWidth;
-      var gap = parseFloat(getComputedStyle(scroller.querySelector('.scroller__track')).columnGap) || 0;
-      return card.getBoundingClientRect().width + gap;
-    }
-
-    // The scroller carries horizontal padding so hover lift and focus rings are
-    // not clipped. Snap points align to the padding edge, so scrollLeft rests at
-    // padding-left rather than 0 — the end tolerance has to allow for that.
-    function endTolerance() {
-      var pad = parseFloat(getComputedStyle(scroller).paddingLeft) || 0;
-      return pad + 2;
-    }
-
-    function syncControls() {
-      var maxScroll = scroller.scrollWidth - scroller.clientWidth;
-      var slack = endTolerance();
-      var overflows = maxScroll > slack;
-
-      scrollerNav.hidden = !overflows;
-      if (!overflows) return;
-
-      prevBtn.disabled = scroller.scrollLeft <= slack;
-      nextBtn.disabled = scroller.scrollLeft >= maxScroll - slack;
-    }
-
-    function step(direction) {
-      scroller.scrollBy({
-        left: direction * stepSize(),
-        behavior: reduceMotion ? 'auto' : 'smooth'
-      });
-    }
-
-    prevBtn.addEventListener('click', function () { step(-1); });
-    nextBtn.addEventListener('click', function () { step(1); });
-
-    // The scroller is focusable, so give it arrow-key control too.
-    scroller.addEventListener('keydown', function (event) {
-      if (event.key === 'ArrowRight') { event.preventDefault(); step(1); }
-      if (event.key === 'ArrowLeft')  { event.preventDefault(); step(-1); }
-    });
-
-    scroller.addEventListener('scroll', syncControls, { passive: true });
-    window.addEventListener('resize', syncControls);
-
-    syncControls();
-    // Card widths depend on the display webfont, so re-check once it lands.
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncControls);
   }
 
   /* ---------------------------------------------------------------------
