@@ -533,10 +533,12 @@
       </div>
 
       <!-- RFQ form ---------------------------------------------------------
-           Works with no backend: on submit, main.js composes a pre-filled
-           email. To use a real form service instead, set a form action and
-           delete the data-mailto attribute. -->
+           Posts to the Cloudflare Pages Function in functions/api/contact.js.
+           data-mailto is the fallback: if the endpoint is unreachable — which
+           it always is when previewing from the local python server — main.js
+           composes a pre-filled email instead so the form is never a dead end. -->
       <form class="rfq reveal" data-delay="1" id="rfqForm"
+            action="/api/contact" method="post"
             data-mailto="sales@vespersupply.com" novalidate>
 
         <h3 class="rfq__title">Request a quote</h3>
@@ -588,6 +590,11 @@
                     name="details" rows="4" required></textarea>
           <p class="field__hint">Tag numbers, model numbers, quantities or a short description.</p>
           <p class="field__error" data-error-for="rfqDetails" hidden>Tell us what you need quoted.</p>
+        </div>
+
+        <div class="rfq__trap" aria-hidden="true">
+          <label for="rfqWebsite">Website</label>
+          <input id="rfqWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
 
         <button class="btn btn--primary rfq__submit" type="submit">

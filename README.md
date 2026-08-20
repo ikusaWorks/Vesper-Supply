@@ -63,6 +63,46 @@ available file carried `fsType` 4 ("print & preview only"), which does not
 permit web embedding, and it had a blank em-dash glyph and a very tight word
 space that needed CSS compensation. None of that applies to Space Grotesk.
 
+## Deploying to Cloudflare Pages
+
+No build step. Connect the GitHub repo in the Cloudflare dashboard:
+
+1. **Workers & Pages → Create → Pages → Connect to Git**, choose
+   `ikusaWorks/Vesper-Supply`.
+2. Build settings:
+   - Framework preset: **None**
+   - Build command: **leave empty**
+   - Build output directory: **`/`**
+3. Deploy. Every push to `main` republishes automatically.
+
+`_headers` sets security headers and caching. `index.html`, `styles.css` and
+`main.js` are set to revalidate because their filenames never change; anything
+under `MEDIA/` is cached for a year.
+
+## Contact form
+
+The RFQ form posts JSON to `/api/contact`, handled by the Pages Function in
+`functions/api/contact.js`, which relays it as email through Resend.
+
+Set these under **Pages → Settings → Environment variables** (Production, and
+Preview if you want the form live there too):
+
+| Variable | Value |
+| --- | --- |
+| `RESEND_API_KEY` | your Resend API key, `re_…` |
+| `CONTACT_TO` | `sales@vespersupply.com` |
+| `CONTACT_FROM` | a verified sender, e.g. `Vesper Supply <website@vespersupply.com>` |
+
+`CONTACT_FROM` has to be on a domain verified in Resend — that is a DNS step in
+the Resend dashboard. Until it is verified, sending will fail.
+
+The key is only ever read inside the Function and never reaches the browser.
+
+**If the endpoint is unreachable** — previewing locally, or before the
+variables are set — the form falls back to composing a pre-filled email, so it
+is never a dead end. Submissions are validated both in the browser and again in
+the Function, and a hidden honeypot field silently discards bot submissions.
+
 ## Still to fill in
 
 - The RFQ form composes a pre-filled email on submit and needs no backend. To
