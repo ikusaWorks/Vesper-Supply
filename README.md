@@ -2,8 +2,8 @@
 
 Marketing site for Vesper Supply — a Texas-based industrial procurement company
 supplying US-manufactured instrumentation, automation, electrical equipment,
-smart valves, cable and actuators to oil and gas operators in Venezuela and the
-wider region.
+smart valves, cable and actuators to oil and gas operators across Latin
+America.
 
 Static HTML, CSS and vanilla JavaScript. No build step, no dependencies.
 

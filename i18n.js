@@ -12,8 +12,8 @@
      data-i18n-aria="key"  replaces the aria-label attribute
 
    The choice is remembered in localStorage and re-applied on the next visit.
-   Spanish here is written for Venezuela and the wider region — "procura",
-   "cabillas" — not for Spain.
+   Spanish here is written for Latin America — "procura", "varillas de
+   bombeo" — not for Spain.
    ------------------------------------------------------------------------ */
 (function () {
   'use strict';
@@ -24,7 +24,7 @@
   var ES = {
     /* ---- document head ------------------------------------------------ */
     'meta.title': 'Vesper Supply — Procura y suministro de equipos industriales',
-    'meta.description': 'Procura y suministro con sede en Texas. Vesper Supply suministra instrumentación, tubería de perforación, válvulas, actuadores, cable y otros equipos industriales críticos para operadores energéticos e industriales, con especial énfasis en los principales fabricantes estadounidenses y en atender a Venezuela y la región.',
+    'meta.description': 'Procura y suministro con sede en Texas. Vesper Supply suministra instrumentación, tubería de perforación, válvulas, actuadores, cable y otros equipos industriales críticos para operadores energéticos e industriales, con especial énfasis en los principales fabricantes estadounidenses y en atender a América Latina.',
     'meta.ogTitle': 'Vesper Supply — Procura y suministro de equipos industriales',
     'meta.ogDescription': 'Conectando la manufactura estadounidense con los mercados energéticos de las Américas.',
 
@@ -50,16 +50,16 @@
     'hero.spec1l': 'Sede principal',
     'hero.spec2v': 'OEM de EE. UU.',
     'hero.spec2l': 'Base principal de suministro',
-    'hero.spec3v': 'Venezuela',
+    'hero.spec3v': 'América Latina',
     'hero.spec3l': 'Mercado principal',
-    'hero.globe': 'Globo terráqueo centrado en el Golfo de México y el Caribe, mostrando la ruta de suministro desde Houston, Texas hasta la costa norte de Venezuela.',
+    'hero.globe': 'Globo terráqueo centrado en el Golfo de México y el Caribe, mostrando la ruta de suministro desde Houston, Texas hacia los mercados de América Latina.',
 
     /* ---- about --------------------------------------------------------- */
     'about.eyebrow': 'Nosotros',
     'about.title': 'Donde la industria se encuentra con la ejecución.',
     'about.lede': 'Vesper Supply es una empresa estadounidense de procura y suministro industrial con sede en Houston, Texas. Atendemos a operadores energéticos e industriales brindando acceso confiable a equipos críticos de fabricantes de confianza.',
     'about.p1': 'Nuestras capacidades abarcan una amplia gama de equipos para campos petroleros, eléctricos, de instrumentación, automatización, control de flujo y otros equipos industriales críticos. Desde la búsqueda y coordinación de proveedores hasta la documentación, exportación, logística y entrega final, Vesper gestiona el proceso desde el origen hasta el sitio con confiabilidad, transparencia y responsabilidad.',
-    'about.p2': 'Con capacidad operativa en campo en Venezuela, Vesper combina una sólida red de suministro en Estados Unidos con capacidades de procura global, logística transfronteriza y ejecución local para respaldar proyectos energéticos e industriales en toda la región.',
+    'about.p2': 'Con capacidad operativa en campo en la región, Vesper combina una sólida red de suministro en Estados Unidos con capacidades de procura global, logística transfronteriza y ejecución local para respaldar proyectos energéticos e industriales en toda la región.',
     'about.slider': 'Operaciones de Vesper Supply',
     'about.serve': 'A quiénes atendemos',
     'ind.region': 'Industrias que atendemos',
@@ -89,7 +89,7 @@
     'kit.9': 'Uniones tipo martillo',
     'kit.10': 'Válvulas reguladoras (choke)',
     'kit.11': 'Válvulas de árbol de navidad',
-    'kit.12': 'Cabillas de bombeo',
+    'kit.12': 'Varillas de bombeo',
 
     /* ---- mission & vision ---------------------------------------------- */
     'mis.eyebrow': 'Misión y visión',
@@ -97,10 +97,10 @@
     'mis.lede': 'Una empresa, una ruta y un estándar que mantenemos en ambos extremos.',
     'mis.mTag': 'Misión',
     'mis.mManifesto': 'Brindar a los operadores energéticos acceso confiable a equipos industriales críticos mediante suministro de confianza, ejecución disciplinada y entrega puntual.',
-    'mis.mBody': 'Con especial énfasis en Venezuela y la región, Vesper reúne fabricantes consolidados, procura disciplinada y entrega transfronteriza confiable para ayudar a los operadores energéticos a avanzar en sus proyectos críticos con confianza.',
+    'mis.mBody': 'Con especial énfasis en América Latina, Vesper reúne fabricantes consolidados, procura disciplinada y entrega transfronteriza confiable para ayudar a los operadores energéticos a avanzar en sus proyectos críticos con confianza.',
     'mis.vTag': 'Visión',
     'mis.vManifesto': 'Conectando a los principales fabricantes con los mercados energéticos de las Américas.',
-    'mis.vBody': 'Ser un socio internacional de procura de confianza que conecte a los principales fabricantes con operaciones energéticas e industriales críticas en Venezuela, América Latina y más allá. Reconocidos por la confiabilidad, la transparencia y la ejecución disciplinada en cada etapa de la cadena de suministro.',
+    'mis.vBody': 'Ser un socio internacional de procura de confianza que conecte a los principales fabricantes con operaciones energéticas e industriales críticas en América Latina y más allá. Reconocidos por la confiabilidad, la transparencia y la ejecución disciplinada en cada etapa de la cadena de suministro.',
     'mis.practice': 'Lo que eso significa en la práctica',
     'pr.1tag': 'Confiables',
     'pr.1title': 'Tiempos de entrega reales. Comunicación clara.',
