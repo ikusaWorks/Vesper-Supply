@@ -17,6 +17,9 @@
 /main.js
   Cache-Control: public, max-age=0, must-revalidate
 
+/i18n.js
+  Cache-Control: public, max-age=0, must-revalidate
+
 # Images and fonts never change under the same name.
 /MEDIA/*
   Cache-Control: public, max-age=31536000, immutable
