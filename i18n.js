@@ -48,7 +48,7 @@
     'hero.solutions': 'Ver soluciones',
     'hero.spec1v': 'Houston, TX',
     'hero.spec1l': 'Sede principal',
-    'hero.spec2v': 'Fabricantes EE. UU.',
+    'hero.spec2v': 'OEM de EE. UU.',
     'hero.spec2l': 'Base principal de suministro',
     'hero.spec3v': 'Venezuela',
     'hero.spec3l': 'Mercado principal',

@@ -548,22 +548,26 @@ button { font: inherit; color: inherit; }
 
 .lang__flag {
   display: block;
-  width: 18px;
-  height: 12.3px;
-  border-radius: 2px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22);
-  opacity: 0.82;
-  transition: opacity var(--dur) var(--ease);
+  width: 20px;
+  height: 10.53px;
+  border-radius: 1.5px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  /* Two saturated flags shout in a header this restrained. The inactive one
+     sits back in grey and only the selected language carries colour, which
+     also makes the current choice readable at a glance. */
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease);
 }
 
 .lang__btn.is-current .lang__flag,
-.lang__btn:hover .lang__flag { opacity: 1; }
+.lang__btn:hover .lang__flag { filter: none; opacity: 1; }
 
 .lang__code { line-height: 1; }
 
 /* Roomier targets on the touch panel. */
 .lang--mobile .lang__btn { padding: 11px 18px; font-size: 0.76rem; }
-.lang--mobile .lang__flag { width: 21px; height: 14.3px; }
+.lang--mobile .lang__flag { width: 24px; height: 12.63px; }
 
 @media (prefers-reduced-motion: reduce) {
   .lang__btn, .lang__flag { transition: none; }
