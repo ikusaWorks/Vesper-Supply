@@ -9,6 +9,13 @@
      CONTACT_FROM     a verified sender on your domain
                       e.g. "Vesper Supply <website@vespersupply.com>"
 
+   Optional:
+     CONTACT_CC       anyone copied on every enquiry, comma separated
+                      e.g. "jdawley@vespersupply.com, samuel@vespersupply.com"
+
+   CONTACT_TO accepts a comma-separated list too, so enquiries can go to
+   several mailboxes rather than one.
+
    The API key is only ever read server-side. It is never sent to the browser.
    ========================================================================== */
 
@@ -23,6 +30,13 @@ function json(body, status = 200) {
 
 function clean(value, limit) {
   return typeof value === 'string' ? value.trim().slice(0, limit) : '';
+}
+
+// "a@b.com, c@d.com" -> ['a@b.com', 'c@d.com']. Tolerates trailing commas and
+// stray whitespace, because these are typed into a dashboard field by hand.
+function addressList(value) {
+  if (typeof value !== 'string') return [];
+  return value.split(',').map(function (a) { return a.trim(); }).filter(Boolean);
 }
 
 // Deliberately permissive: the point is to catch typos, not to police
@@ -75,6 +89,10 @@ export async function onRequestPost(context) {
     return json({ ok: false, error: 'The form is not configured yet.' }, 500);
   }
 
+  // Everyone copied is internal, so cc rather than bcc: replying to all
+  // reaches the enquirer and the rest of the team in one go.
+  const cc = addressList(env.CONTACT_CC);
+
   const rows = [
     ['Name', name], ['Company', company], ['Email', email], ['Category', category || '—']
   ];
@@ -102,14 +120,14 @@ export async function onRequestPost(context) {
         authorization: 'Bearer ' + env.RESEND_API_KEY,
         'content-type': 'application/json'
       },
-      body: JSON.stringify({
+      body: JSON.stringify(Object.assign({
         from: env.CONTACT_FROM,
-        to: [env.CONTACT_TO],
+        to: addressList(env.CONTACT_TO),
         reply_to: email,            // replying goes straight back to the enquirer
         subject: 'RFQ — ' + company + (category ? ' — ' + category : ''),
         html: html,
         text: text
-      })
+      }, cc.length ? { cc: cc } : {}))
     });
   } catch (err) {
     console.error('contact: resend unreachable', err);

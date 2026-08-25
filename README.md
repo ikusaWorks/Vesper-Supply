@@ -92,6 +92,11 @@ Preview if you want the form live there too):
 | `RESEND_API_KEY` | your Resend API key, `re_…` |
 | `CONTACT_TO` | `sales@vespersupply.com` |
 | `CONTACT_FROM` | a verified sender, e.g. `Vesper Supply <website@vespersupply.com>` |
+| `CONTACT_CC` | *optional* — copied on every enquiry, comma separated |
+
+`CONTACT_TO` and `CONTACT_CC` both accept a comma-separated list, so an
+enquiry can reach a shared inbox and several people at once without any code
+change. Leave `CONTACT_CC` unset to copy nobody.
 
 `CONTACT_FROM` has to be on a domain verified in Resend — that is a DNS step in
 the Resend dashboard. Until it is verified, sending will fail.
