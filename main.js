@@ -213,6 +213,14 @@
     return valid;
   }
 
+  /* Status strings are generated here rather than sitting in the markup, so
+     they are looked up directly. The English literal is the fallback: if
+     i18n.js has not loaded, the form still speaks. */
+  function t(key, fallback) {
+    var v = window.VesperI18n && window.VesperI18n.t(key);
+    return v == null ? fallback : v;
+  }
+
   function setStatus(message, kind) {
     if (!status) return;
     status.textContent = message;
@@ -269,7 +277,7 @@
       });
 
       if (!allValid) {
-        setStatus('Check the highlighted fields above.', 'error');
+        setStatus(t('form.statusInvalid', 'Check the highlighted fields above.'), 'error');
         if (firstInvalid) firstInvalid.focus();
         return;
       }
@@ -277,7 +285,7 @@
       var payload = readForm();
 
       submitBtn.disabled = true;
-      setStatus('Sending…');
+      setStatus(t('form.statusSending', 'Sending…'));
 
       fetch(form.getAttribute('action'), {
         method: 'POST',
@@ -292,7 +300,7 @@
         .then(function (result) {
           if (result.ok) {
             form.reset();
-            setStatus('Thank you — we have your request and will reply shortly.', 'ok');
+            setStatus(t('form.statusOk', 'Thank you — we have your request and will reply shortly.'), 'ok');
           } else if (result.body && result.body.error) {
             setStatus(result.body.error, 'error');
           } else {

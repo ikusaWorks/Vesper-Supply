@@ -485,6 +485,90 @@ button { font: inherit; color: inherit; }
 .menu-toggle[aria-expanded="true"] .menu-toggle__bars::before { transform: translateY(4.25px) rotate(45deg); }
 .menu-toggle[aria-expanded="true"] .menu-toggle__bars::after  { transform: translateY(-4.25px) rotate(-45deg); }
 
+/* Language switcher --------------------------------------------------------
+   Lives on dark ground in both places it appears: the fixed header (over the
+   hero, and over the stuck dark bar) and the mobile nav panel. Flags are
+   inline SVG so they cost no request and stay crisp; the EN/ES code beside
+   each one carries the meaning, since a flag names a country rather than a
+   language. */
+.lang {
+  display: none;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.lang--mobile {
+  display: inline-flex;
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 1024px) {
+  .lang { display: inline-flex; }
+
+  /* With the switcher present the header has four children. Centre the nav
+     on its own margins so the quote button and the switcher stay paired at
+     the right edge instead of being spread apart by space-between. */
+  .site-header__inner { justify-content: flex-start; }
+  .nav { margin-inline: auto; }
+}
+
+.lang__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 11px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.lang__btn:hover { color: #fff; }
+
+.lang__btn.is-current {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.lang__btn:focus-visible {
+  outline: 2px solid var(--brand-sky);
+  outline-offset: 2px;
+}
+
+.lang__flag {
+  display: block;
+  width: 18px;
+  height: 12.3px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22);
+  opacity: 0.82;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.lang__btn.is-current .lang__flag,
+.lang__btn:hover .lang__flag { opacity: 1; }
+
+.lang__code { line-height: 1; }
+
+/* Roomier targets on the touch panel. */
+.lang--mobile .lang__btn { padding: 11px 18px; font-size: 0.76rem; }
+.lang--mobile .lang__flag { width: 21px; height: 14.3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lang__btn, .lang__flag { transition: none; }
+}
+
 .mobile-nav {
   position: fixed;
   inset: 76px 0 auto 0;
